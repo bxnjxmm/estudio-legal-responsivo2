@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+
+html {
+  scroll-behavior: smooth;
+  background-color: #0B0C10;
+}
+
+body {
+  background-color: #0B0C10;
+  color: #C9D6E3;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Escala tipográfica fluida: crece con el ancho de pantalla en vez de saltar
+   entre tamaños fijos por breakpoint — se ve bien en cualquier punto intermedio
+   (tablets, plegables, monitores anchos), no solo en los tamaños "de catálogo". */
+.h-hero {
+  font-size: clamp(2.35rem, 6vw + 0.6rem, 4.15rem);
+  line-height: 1.07;
+  letter-spacing: -0.01em;
+}
+.h-pagina {
+  font-size: clamp(1.9rem, 5vw + 0.4rem, 3rem);
+  line-height: 1.1;
+}
+.h-seccion {
+  font-size: clamp(1.65rem, 4.4vw + 0.35rem, 2.7rem);
+  line-height: 1.16;
+}
+.h-declaracion {
+  font-size: clamp(1.4rem, 3.6vw + 0.5rem, 2.3rem);
+  line-height: 1.32;
+}
+
+/* El detalle de cada tarjeta de materia se oculta hasta el hover SOLO en
+   pantallas con mouse real. En touch (celular/tablet) no existe un ":hover"
+   confiable, así que ahí el detalle queda siempre visible en vez de escondido
+   detrás de un gesto que el dispositivo no puede dar. */
+.detalle-tarjeta { max-height: 13rem; opacity: 1; }
+@media (hover: hover) and (pointer: fine) {
+  .detalle-tarjeta { max-height: 0; opacity: 0; overflow: hidden; transition: max-height .5s ease, opacity .5s ease; }
+  .group:hover .detalle-tarjeta { max-height: 13rem; opacity: 1; }
+}
+
+/* Trama de expediente: líneas verticales tenues que estructuran toda la página */
+.trama {
+  background-image: linear-gradient(90deg, rgba(201,214,227,.05) 1px, transparent 1px);
+  background-size: 96px 100%;
+}
+
+.vidrio {
+  background: linear-gradient(160deg, rgba(28,37,65,.72), rgba(10,17,40,.55));
+  border: 1px solid rgba(201,214,227,.10);
+  backdrop-filter: blur(14px);
+}
+
+.halo::after {
+  content: '';
+  position: absolute; inset: -1px;
+  border-radius: inherit;
+  background: radial-gradient(420px circle at var(--mx,50%) var(--my,0%), rgba(76,141,255,.18), transparent 62%);
+  opacity: 0; transition: opacity .45s ease; pointer-events: none;
+}
+.halo:hover::after { opacity: 1; }
+
+.filo { border-top: 1px solid rgba(201,214,227,.10); }
+
+::selection { background: #4C8DFF; color: #0B0C10; }
+
+*:focus-visible { outline: 2px solid #4C8DFF; outline-offset: 3px; border-radius: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  html { scroll-behavior: auto; }
+}
