@@ -46,7 +46,7 @@ export default function Articulo({ params }: { params: { slug: string } }) {
 
           <aside className="vidrio mt-14 rounded-2xl p-7">
             <h2 className="font-display text-xl text-white">¿Tu caso se parece a esto?</h2>
-            <p className="mt-2 text-sm text-plata/60">Cada situación tiene matices. Escríbeme y lo revisamos con nombre y apellido.</p>
+            <p className="mt-2 text-sm text-plata/60">Cada situación tiene matices. Escríbenos y lo revisamos con nombre y apellido.</p>
             <a href={whatsapp(`Hola, leí el artículo "${post.titulo}" y tengo una consulta.`)} target="_blank" rel="noopener noreferrer" className="mt-5 inline-block rounded-full bg-electrico px-6 py-3 text-sm font-medium text-noche transition hover:bg-white">
               Consultar por WhatsApp
             </a>

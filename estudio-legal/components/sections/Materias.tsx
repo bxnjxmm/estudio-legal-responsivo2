@@ -1,12 +1,12 @@
 'use client';
 import { useRef } from 'react';
-import { Scale, Gavel, Plane, Briefcase, Heart, Car } from 'lucide-react';
-import { areas, whatsapp } from '@/lib/site';
+import { Scale, Gavel, Plane, Briefcase, Heart, Car, Building2, Home } from 'lucide-react';
+import { areas, whatsappMateria } from '@/lib/site';
 import Reveal from '@/components/ui/Reveal';
 
-const iconos = [Gavel, Scale, Plane, Briefcase, Heart, Car];
+const iconos = [Gavel, Scale, Plane, Briefcase, Heart, Car, Building2, Home];
 
-function Tarjeta({ area, Icono, i }: { area: (typeof areas)[number]; Icono: any; i: number }) {
+function Tarjeta({ area, Icono, i, className }: { area: (typeof areas)[number]; Icono: any; i: number; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const seguir = (e: React.MouseEvent) => {
     const r = ref.current?.getBoundingClientRect();
@@ -16,7 +16,7 @@ function Tarjeta({ area, Icono, i }: { area: (typeof areas)[number]; Icono: any;
   };
 
   return (
-    <Reveal delay={i * 0.06}>
+    <Reveal delay={i * 0.06} className={className}>
       <div
         ref={ref}
         onMouseMove={seguir}
@@ -39,7 +39,7 @@ function Tarjeta({ area, Icono, i }: { area: (typeof areas)[number]; Icono: any;
           <div className="mt-6 flex items-center justify-between gap-3 border-t border-plata/10 pt-4">
             <span className="text-[11px] leading-tight text-plata/40">{area.tribunal}</span>
             <a
-              href={whatsapp(`Hola, necesito asesoría en ${area.nombre}.`)}
+              href={whatsappMateria(area.slug)}
               target="_blank"
               rel="noopener noreferrer"
               className="shrink-0 text-xs text-electrico transition hover:text-white"
@@ -59,17 +59,24 @@ export default function Materias() {
       <div className="mx-auto max-w-6xl px-6">
         <Reveal>
           <h2 className="max-w-2xl font-display h-seccion font-light text-white">
-            Seis materias, un criterio: que entiendas tu propio caso.
+            Ocho materias, un criterio: que entiendas tu propio caso.
           </h2>
           <p className="mt-5 max-w-contenido text-plata/60">
             Cada área tiene sus plazos, su tribunal y sus riesgos. Pasa el cursor sobre una materia para ver qué tipo de
-            causas tramito dentro de ella.
+            causas tramitamos dentro de ella.
           </p>
         </Reveal>
 
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {/* 1 columna en móvil, 2 en tablet y 6 en escritorio (3 tarjetas por fila; si sobran 2, ocupan media fila cada una). */}
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-6">
           {areas.map((a, i) => (
-            <Tarjeta key={a.slug} area={a} Icono={iconos[i]} i={i} />
+            <Tarjeta
+              key={a.slug}
+              area={a}
+              Icono={iconos[i]}
+              i={i}
+              className={areas.length % 3 === 2 && i >= areas.length - 2 ? 'lg:col-span-3' : 'lg:col-span-2'}
+            />
           ))}
         </div>
       </div>

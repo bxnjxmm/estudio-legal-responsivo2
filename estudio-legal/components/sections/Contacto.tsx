@@ -36,9 +36,9 @@ export default function Contacto() {
       <div className="mx-auto max-w-6xl px-6">
       <div className="grid gap-14 lg:grid-cols-[.85fr_1.15fr]">
         <Reveal>
-          <h2 className="font-display h-seccion font-light text-white">Cuéntame qué pasó</h2>
+          <h2 className="font-display h-seccion font-light text-white">Cuéntanos qué pasó</h2>
           <p className="mt-5 text-plata/60">
-            Escríbeme por el canal que te acomode. Respondo dentro de 24 horas hábiles y te digo con franqueza si tu caso
+            Escríbenos por el canal que te acomode. Respondemos dentro de 24 horas hábiles y te decimos con franqueza si tu caso
             tiene o no tiene camino.
           </p>
 
@@ -67,8 +67,8 @@ export default function Contacto() {
             {estado === 'ok' ? (
               <div className="flex min-h-[380px] flex-col items-center justify-center text-center">
                 <div className="rounded-full border border-electrico/40 bg-electrico/10 p-4"><Check className="h-6 w-6 text-electrico" /></div>
-                <h3 className="mt-6 font-display text-2xl text-white">Recibí tu mensaje</h3>
-                <p className="mt-3 max-w-sm text-sm text-plata/60">Te respondo dentro de 24 horas hábiles. Si es urgente, escríbeme directo por WhatsApp.</p>
+                <h3 className="mt-6 font-display text-2xl text-white">Recibimos tu mensaje</h3>
+                <p className="mt-3 max-w-sm text-sm text-plata/60">Te respondemos dentro de 24 horas hábiles. Si es urgente, escríbenos directo por WhatsApp.</p>
                 <a href={whatsapp()} target="_blank" rel="noopener noreferrer" className="mt-7 rounded-full bg-electrico px-6 py-3 text-sm font-medium text-noche transition hover:bg-white">Abrir WhatsApp</a>
               </div>
             ) : (
@@ -83,7 +83,7 @@ export default function Contacto() {
                   {areas.map((a) => <option key={a.slug} value={a.nombre} className="bg-noche">{a.nombre}</option>)}
                   <option value="Otra" className="bg-noche">Otra / no estoy seguro</option>
                 </select>
-                <textarea name="mensaje" required rows={5} placeholder="Cuéntame brevemente qué ocurrió y desde cuándo" className={`${campo} resize-none`} />
+                <textarea name="mensaje" required rows={5} placeholder="Cuéntanos brevemente qué ocurrió y desde cuándo" className={`${campo} resize-none`} />
                 <label className="flex items-start gap-3 text-xs text-plata/50">
                   <input type="checkbox" required className="mt-0.5 h-4 w-4 accent-[#4C8DFF]" />
                   Autorizo el uso de mis datos para responder esta consulta.
@@ -91,7 +91,7 @@ export default function Contacto() {
                 <button type="submit" disabled={estado === 'enviando'} className="flex w-full items-center justify-center gap-2 rounded-xl bg-electrico py-3.5 text-sm font-medium text-noche transition hover:bg-white disabled:opacity-60">
                   {estado === 'enviando' ? <><Loader2 className="h-4 w-4 animate-spin" />Enviando</> : 'Enviar consulta'}
                 </button>
-                {estado === 'error' && <p className="text-sm text-red-300">{mensajeError}. Intenta de nuevo o escríbeme por WhatsApp.</p>}
+                {estado === 'error' && <p className="text-sm text-red-300">{mensajeError}. Intenta de nuevo o escríbenos por WhatsApp.</p>}
               </form>
             )}
           </div>

@@ -7,7 +7,7 @@ import Marca from '@/components/ui/Marca';
 
 const enlaces = [
   { href: '/#materias', label: 'Materias' },
-  { href: '/#sobre-mi', label: 'Sobre mí' },
+  { href: '/#quienes-somos', label: 'Quiénes somos' },
   { href: '/#resenas', label: 'Reseñas' },
   { href: '/blog', label: 'Publicaciones' },
   { href: '/#contacto', label: 'Contacto' }

@@ -14,15 +14,15 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.dominio),
-  title: `${site.abogada} | Abogada en Chile — Penal, Civil, Familia, Laboral y Migración`,
+  title: `${site.marca} | Estudio jurídico en Chile — Penal, Civil, Familia, Laboral y Migración`,
   description:
-    'Estudio jurídico en Santiago. Defensa penal, familia, laboral, civil, migración y Policía Local. La misma abogada que revisa tu caso es la que va al tribunal.',
-  keywords: ['abogada Chile', 'abogado Santiago', 'pensión de alimentos', 'despido injustificado', 'visa Chile', 'defensa penal'],
+    'Estudio jurídico en Santiago. Defensa penal, familia, laboral, civil, migración, Policía Local, copropiedad y asesoría inmobiliaria. Evaluamos tu caso en detalle y te explicamos con claridad tus posibilidades reales.',
+  keywords: ['estudio jurídico Chile', 'abogados Santiago', 'pensión de alimentos', 'despido injustificado', 'visa Chile', 'defensa penal', 'ley de copropiedad'],
   openGraph: {
-    title: `${site.abogada} | Abogada en Chile`,
-    description: 'Asesoría legal directa y estrategia clara desde la primera reunión, en penal, civil, familia, laboral y migración.',
+    title: `${site.marca} | Estudio jurídico en Chile`,
+    description: 'Asesoría legal directa y estrategia clara desde la primera reunión, en penal, civil, familia, laboral, migración, copropiedad e inmobiliario.',
     url: site.dominio,
-    siteName: site.estudio,
+    siteName: site.marca,
     locale: 'es_CL',
     type: 'website'
   },
@@ -34,8 +34,9 @@ export const metadata: Metadata = {
 // y app/page.tsx). Publicar una calificación inventada en el schema puede penalizar el SEO.
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'Attorney',
-  name: site.abogada,
+  '@type': 'LegalService',
+  name: site.marca,
+  founder: { '@type': 'Person', name: site.fundadora, jobTitle: 'Abogada fundadora' },
   image: `${site.dominio}/og.jpg`,
   url: site.dominio,
   telephone: site.telefono,

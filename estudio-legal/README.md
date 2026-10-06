@@ -8,10 +8,7 @@ reemplázalo apenas ella te confirme la información real.
 
 | Dato | Dónde está | Qué hacer |
 |---|---|---|
-| Universidad, año de titulación, posgrado | `lib/site.ts` → `credenciales` | Cambiar por los datos reales que entregue la clienta |
-| Dirección de la oficina | `lib/site.ts` → `site.direccion` | Cambiar por la dirección real, o quitarla si aún no hay oficina física |
-| Coordenadas del mapa | `lib/site.ts` → `mapa` | Reemplazar por las coordenadas exactas de la oficina real (ver sección 8) |
-| Biografía (2 párrafos) | `lib/site.ts` → `credenciales.bio` | Reescribir con su historia real: por qué ejerce, qué la distingue |
+| Formación de la fundadora, marca, teléfono, correo y dirección | `lib/site.ts` → `site`, `formacion` | Ya son datos reales de Defensas Pavez Abogados |
 | Reseñas de la sección "Reseñas" | `lib/reviews.ts` → `RESPALDO` | Se reemplazan solas al conectar Google (paso 5); mientras tanto son de referencia |
 | Testimonios del blog / artículos | `lib/posts.ts` | Textos genéricos de ejemplo; se pueden reemplazar por casos reales (anonimizados) |
 
@@ -19,7 +16,7 @@ reemplázalo apenas ella te confirme la información real.
 
 | Archivo | Qué contiene |
 |---|---|
-| `lib/site.ts` | Nombre, contacto, redes, las 6 materias y credenciales/bio |
+| `lib/site.ts` | Marca, contacto, mapa, mensajes de WhatsApp, las 8 materias y la formación de la fundadora |
 | `lib/posts.ts` | Artículos del blog |
 | `lib/reviews.ts` | Reseñas de referencia y conexión con Google |
 
@@ -104,7 +101,7 @@ Google), no el listado completo. Para mostrar todas, hay que enlazar directament
 
 | Ubicación en el sitio | Qué foto poner | Tamaño recomendado |
 |---|---|---|
-| Sección "Sobre mí" (`components/sections/SobreAbogada.tsx`) | Retrato profesional de la abogada — fondo simple, buena luz, actitud cercana pero seria | Vertical, mínimo 1000×1250 px |
+| Sección "Sobre la fundadora" (`components/sections/SobreAbogada.tsx`, foto en `public/images/baitiare-pavez.jpg`) | Retrato profesional de la abogada — fondo simple, buena luz, actitud cercana pero seria | Vertical, mínimo 1000×1250 px |
 | Cada artículo del blog (`app/blog/[slug]/page.tsx`) | Una imagen genérica por categoría (una sala de audiencia, un escritorio con documentos, una firma de contrato) — no hace falta que sea del caso real | 1200×675 px (16:9) |
 | Miniaturas de blog en portada (`components/sections/Publicaciones.tsx`) | Las mismas imágenes de cada artículo, recortadas | 800×450 px |
 | Imagen para compartir en redes (Open Graph) | Una sola imagen con el nombre, foto y una frase corta — es lo que se ve al compartir el link en WhatsApp o Instagram | 1200×630 px, guardar como `public/og.jpg` |
@@ -119,30 +116,18 @@ Para insertar una foto donde hoy hay un placeholder, reemplaza el bloque marcado
 
 ```tsx
 import Image from 'next/image';
-<Image src="/fotos/abogada.jpg" alt="Camila Ortúzar Vial, abogada" fill className="object-cover" />
+<Image src="/fotos/abogada.jpg" alt="Baitiare Scarleth Pavez, abogada fundadora de Defensas Pavez Abogados" fill className="object-cover" />
 ```
 
 Deja los archivos en `public/fotos/`. Si vas a usar fotografías de Unsplash mientras consigues las
 reales, el dominio ya está habilitado en `next.config.mjs`.
 
-## 8. Mapa de la oficina (Google Maps en modo oscuro)
+## 8. Mapa de la oficina (embed de Google Maps en modo oscuro)
 
-La sección de Contacto trae un mapa con estilo oscuro a juego con la paleta del sitio, más un
-botón "Cómo llegar" que abre la ruta directamente en Google Maps. El botón funciona siempre, sin
-configurar nada. El mapa interactivo necesita una API key:
-
-1. En [Google Cloud Console](https://console.cloud.google.com/), crea o usa un proyecto y activa
-   **"Maps JavaScript API"**.
-2. Genera una API key y restríngela por dominio (Application restrictions → HTTP referrers) para
-   que solo funcione desde el sitio.
-3. Agrega `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` en Vercel con esa key.
-4. Reemplaza las coordenadas de referencia en `lib/site.ts` (`export const mapa = {...}`) por las
-   exactas de la oficina real — se obtienen haciendo clic derecho sobre el punto exacto en
-   [Google Maps](https://maps.google.com) y copiando las coordenadas que aparecen.
-
-**Costo:** Google da una cuota gratuita mensual para Maps JavaScript API; para las visitas normales
-de un sitio de este tipo, generalmente no se sale de esa cuota. Sin la API key, el sitio no se rompe:
-muestra una tarjeta con la dirección y el mismo botón "Cómo llegar".
+La sección de Contacto trae un mapa embebido con la dirección de la oficina (Paseo Ahumada 370,
+Santiago), con estilo oscuro a juego con la paleta del sitio, más un botón "Cómo llegar" que abre la
+ruta directamente en Google Maps. No requiere API key ni configuración. Si la oficina cambia de
+dirección, se editan los enlaces `mapa.embed` y `mapa.ruta` en `lib/site.ts`.
 
 ## 9. Sistema de citas (agendamiento conectado a Google Calendar)
 
@@ -173,6 +158,8 @@ ya resuelve eso de forma profesional y gratuita para un solo usuario.
    | Derecho Laboral | `consulta-laboral` |
    | Derecho de Familia | `consulta-familia` |
    | Juzgado de Policía Local | `consulta-policia-local` |
+   | Ley de Copropiedad | `consulta-copropiedad` |
+   | Asesoría Inmobiliaria | `consulta-inmobiliaria` |
 
    En cada tipo de evento se define la duración (por ejemplo, 30 min) y el horario disponible —
    distinto para cada materia si conviene, por ejemplo una consulta penal más larga que una de
@@ -196,7 +183,7 @@ también se conecta a Google Calendar y ofrece un embed muy similar
 - **Sin preloader.** El H1 se pinta en el primer frame; las animaciones ocurren sobre contenido ya
   visible, nunca lo esconden.
 - **Sin foco en precio.** Todo el texto evita hablar de honorarios o costos: la propuesta de valor
-  es cercanía, continuidad (la misma abogada de principio a fin) y trayectoria verificable.
+  es cercanía, trato honesto y formación verificable.
 - **"Manifiesto" como quiebre de ritmo.** Entre las ventajas y las reseñas hay una frase potente a
   pantalla completa — evita que el scroll se sienta monótono y deja una idea memorable.
 - **Reseñas de Google en vez de testimonios inventados.** En cuanto se conecta el Perfil de
@@ -209,8 +196,7 @@ también se conecta a Google Calendar y ofrece un embed muy similar
   paso que más fricción genera en un sitio de servicios: saber cuándo se puede reunir alguien.
   Elegir la materia primero también hace que la abogada llegue a la reunión sabiendo de qué se
   trata.
-- **El mapa y el botón "Cómo llegar" se degradan con elegancia.** Sin API key de Google Maps, el
-  sitio muestra una tarjeta estilizada en vez de un mapa roto o en blanco — la misma filosofía que
-  ya se usa en las reseñas y en las fotos placeholder.
+- **Mapa sin configuración.** El mapa embebido por dirección y el botón "Cómo llegar" funcionan sin
+  API key de Google Maps.
 - **Accesibilidad.** Foco visible, contraste AA sobre fondo oscuro, `prefers-reduced-motion`
   respetado.
