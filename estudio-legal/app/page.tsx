@@ -3,10 +3,8 @@ import Hero from '@/components/sections/Hero';
 import Materias from '@/components/sections/Materias';
 import QuienesSomos from '@/components/sections/QuienesSomos';
 import SobreAbogada from '@/components/sections/SobreAbogada';
-import Metodo from '@/components/sections/Metodo';
-import Manifiesto from '@/components/sections/Manifiesto';
+import Agendar from '@/components/sections/Agendar';
 import Resenas from '@/components/sections/Resenas';
-import Citas from '@/components/sections/Citas';
 import Publicaciones from '@/components/sections/Publicaciones';
 import Contacto from '@/components/sections/Contacto';
 import Footer from '@/components/sections/Footer';
@@ -28,6 +26,8 @@ export default async function Home() {
       }
     : null;
 
+  // Recorrido de la página: entender el problema (Hero) → qué hacemos (Materias) → por qué confiar
+  // (Quiénes somos y fundadora) → actuar (Agendar, único llamado a la acción) → seguir informándose.
   return (
     <>
       {jsonLdResenas && (
@@ -39,10 +39,9 @@ export default async function Home() {
         <Materias />
         <QuienesSomos />
         <SobreAbogada />
-        <Metodo />
-        <Manifiesto />
-        <Resenas resumen={resumen} enlaceEscribirResena={enlaceEscribirResena} />
-        <Citas />
+        <Agendar />
+        {/* Las reseñas solo se muestran cuando son reales (Perfil de Negocio de Google conectado). */}
+        {resumen.enVivo && <Resenas resumen={resumen} enlaceEscribirResena={enlaceEscribirResena} />}
         <Publicaciones />
         <Contacto />
       </main>

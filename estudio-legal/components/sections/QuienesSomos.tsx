@@ -10,7 +10,7 @@ const pilares = [
 
 export default function QuienesSomos() {
   return (
-    <section id="quienes-somos" className="bg-marina pt-24 trama lg:pt-32">
+    <section id="quienes-somos" className="bg-marina pt-16 trama lg:pt-24">
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid gap-8 lg:grid-cols-[.8fr_1.2fr] lg:gap-14">
           <Reveal>

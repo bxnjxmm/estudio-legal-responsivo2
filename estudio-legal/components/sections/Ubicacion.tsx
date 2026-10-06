@@ -1,5 +1,5 @@
-import { MapPin, Navigation } from 'lucide-react';
-import { site, mapa } from '@/lib/site';
+import { Mail, MapPin, Navigation, Phone } from 'lucide-react';
+import { site, mapa, whatsapp } from '@/lib/site';
 
 // Estilo oscuro del embed, a juego con la paleta del sitio: se invierte el mapa claro
 // de Google y se rota el tono para conservar el azul del agua y las calles.
@@ -7,7 +7,7 @@ const filtroOscuro = 'invert(92%) hue-rotate(180deg) saturate(0.7) brightness(0.
 
 export default function Ubicacion() {
   return (
-    <div className="mt-16 grid gap-6 border-t border-plata/10 pt-16 lg:grid-cols-[1fr_1.3fr]">
+    <div className="mt-10 grid gap-6 lg:grid-cols-[1fr_1.3fr]">
       <div className="vidrio flex h-full flex-col justify-between rounded-2xl p-8">
         <div>
           <MapPin className="h-5 w-5 text-electrico" />
@@ -17,13 +17,26 @@ export default function Ubicacion() {
             <br />
             {site.ciudad}
           </p>
-          <p className="mt-4 text-sm text-plata/45">Atención presencial con hora agendada, de lunes a viernes.</p>
+          <ul className="mt-6 space-y-3 text-sm">
+            <li>
+              <a href={whatsapp()} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 text-plata/75 transition hover:text-white">
+                <Phone className="h-4 w-4 text-electrico" />
+                <span>{site.telefonoVisible}<span className="ml-2 text-xs text-plata/40 group-hover:text-electrico">WhatsApp</span></span>
+              </a>
+            </li>
+            <li>
+              <a href={`mailto:${site.email}`} className="flex items-center gap-3 break-all text-plata/75 transition hover:text-white">
+                <Mail className="h-4 w-4 shrink-0 text-electrico" />
+                {site.email}
+              </a>
+            </li>
+          </ul>
         </div>
         <a
           href={mapa.ruta}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-electrico px-6 py-3.5 text-sm font-medium text-noche transition hover:bg-white"
+          className="mt-8 inline-flex items-center justify-center gap-2 rounded-full border border-electrico/40 bg-electrico/10 px-6 py-3.5 text-sm font-medium text-white transition hover:bg-electrico hover:text-noche"
         >
           <Navigation className="h-4 w-4" />
           Cómo llegar

@@ -1,81 +1,68 @@
 'use client';
-import { useRef } from 'react';
-import { areas, whatsappMateria } from '@/lib/site';
+import { useState } from 'react';
+import { ChevronDown } from 'lucide-react';
+import { areas } from '@/lib/site';
 import Reveal from '@/components/ui/Reveal';
 import { iconosMateria } from '@/components/ui/iconosMateria';
 
-function Tarjeta({ area, Icono, i, className }: { area: (typeof areas)[number]; Icono: any; i: number; className?: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const seguir = (e: React.MouseEvent) => {
-    const r = ref.current?.getBoundingClientRect();
-    if (!r) return;
-    ref.current!.style.setProperty('--mx', `${e.clientX - r.left}px`);
-    ref.current!.style.setProperty('--my', `${e.clientY - r.top}px`);
-  };
-
-  return (
-    <Reveal delay={i * 0.06} className={className}>
-      <div
-        ref={ref}
-        onMouseMove={seguir}
-        className="halo group relative h-full overflow-hidden rounded-2xl border border-plata/10 bg-pizarra/25 p-7 transition-colors duration-500 hover:border-electrico/35"
-      >
-        <div className="relative z-10">
-          <Icono className="h-6 w-6 text-electrico" strokeWidth={1.4} />
-          <h3 className="mt-6 font-display text-xl text-white">{area.nombre}</h3>
-          <p className="mt-3 text-sm leading-relaxed text-plata/60">{area.resumen}</p>
-
-          <ul className="detalle-tarjeta mt-5 text-sm text-plata/70">
-            {area.detalle.map((d) => (
-              <li key={d} className="flex gap-2.5 py-1">
-                <span className="mt-[9px] h-px w-3 shrink-0 bg-electrico/70" />
-                {d}
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-6 flex items-center justify-between gap-3 border-t border-plata/10 pt-4">
-            <span className="text-[11px] leading-tight text-plata/40">{area.tribunal}</span>
-            <a
-              href={whatsappMateria(area.slug)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="shrink-0 text-xs text-electrico transition hover:text-white"
-            >
-              Consultar
-            </a>
-          </div>
-        </div>
-      </div>
-    </Reveal>
-  );
-}
-
 export default function Materias() {
+  const [abierta, setAbierta] = useState<string | null>(areas[0].slug);
+
   return (
-    <section id="materias" className="relative bg-noche py-24 lg:py-32">
+    <section id="materias" className="relative bg-noche py-16 lg:py-24">
       <div className="mx-auto max-w-6xl px-6">
         <Reveal>
           <h2 className="max-w-2xl font-display h-seccion font-light text-white">
             Ocho materias, un criterio: que entiendas tu propio caso.
           </h2>
           <p className="mt-5 max-w-contenido text-plata/60">
-            Cada área tiene sus plazos, su tribunal y sus riesgos. Pasa el cursor sobre una materia para ver qué tipo de
-            causas tramitamos dentro de ella.
+            Cada área tiene sus plazos, su tribunal y sus riesgos. Toca una materia para ver qué tipo de causas
+            tramitamos dentro de ella.
           </p>
         </Reveal>
 
-        {/* 1 columna en móvil, 2 en tablet y 6 en escritorio (3 tarjetas por fila; si sobran 2, ocupan media fila cada una). */}
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-6">
-          {areas.map((a, i) => (
-            <Tarjeta
-              key={a.slug}
-              area={a}
-              Icono={iconosMateria[a.slug]}
-              i={i}
-              className={areas.length % 3 === 2 && i >= areas.length - 2 ? 'lg:col-span-3' : 'lg:col-span-2'}
-            />
-          ))}
+        <div className="mt-10 grid items-start gap-3 lg:grid-cols-2">
+          {areas.map((a, i) => {
+            const Icono = iconosMateria[a.slug];
+            const abierto = abierta === a.slug;
+            return (
+              <Reveal key={a.slug} delay={(i % 2) * 0.05}>
+                <div className={`overflow-hidden rounded-2xl border bg-pizarra/25 transition-colors duration-300 ${abierto ? 'border-electrico/35' : 'border-plata/10 hover:border-plata/25'}`}>
+                  <button
+                    onClick={() => setAbierta(abierto ? null : a.slug)}
+                    aria-expanded={abierto}
+                    aria-controls={`materia-${a.slug}`}
+                    className="flex w-full items-center gap-4 p-5 text-left"
+                  >
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-electrico/25 bg-electrico/10">
+                      <Icono className="h-5 w-5 text-electrico" strokeWidth={1.4} />
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="block font-display text-lg text-white">{a.nombre}</span>
+                      <span className="mt-1 block text-sm leading-snug text-plata/55">{a.resumen}</span>
+                    </span>
+                    <ChevronDown className={`h-5 w-5 shrink-0 text-plata/40 transition-transform duration-300 ${abierto ? 'rotate-180 text-electrico' : ''}`} />
+                  </button>
+
+                  <div id={`materia-${a.slug}`} className={`grid transition-all duration-300 ${abierto ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+                    <div className="overflow-hidden">
+                      <div className="border-t border-plata/10 px-5 pb-5 pt-4">
+                        <ul className="space-y-1 text-sm text-plata/70">
+                          {a.detalle.map((d) => (
+                            <li key={d} className="flex gap-2.5 py-1">
+                              <span className="mt-[9px] h-px w-3 shrink-0 bg-electrico/70" />
+                              {d}
+                            </li>
+                          ))}
+                        </ul>
+                        <p className="mt-3 text-[11px] leading-tight text-plata/40">{a.tribunal}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>

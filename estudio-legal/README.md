@@ -1,4 +1,4 @@
-# Estudio Jurídico — Maqueta web premium (Next.js 14 + Tailwind + Framer Motion)
+﻿# Estudio Jurídico — Maqueta web premium (Next.js 14 + Tailwind + Framer Motion)
 
 Esta es una **maqueta** para mostrarle a la clienta antes de cargar sus datos reales. Todo lo que
 suena a dato personal (universidad, dirección, biografía) está marcado abajo como inventado —
@@ -42,11 +42,11 @@ En [vercel.com](https://vercel.com): **Add New → Project** → importa el repo
 vuelve a desplegar automáticamente. Dominio temporal `*.vercel.app` incluido; el definitivo se
 agrega en **Settings → Domains**.
 
-## 4. Formulario de contacto
+## 4. Un solo canal para agendar
 
-Funciona sin configuración: valida los datos y deja la consulta en los logs de Vercel. Para que
-llegue por correo, crea una cuenta en [resend.com](https://resend.com) y agrega `RESEND_API_KEY`
-y `CORREO_DESTINO` en Vercel — no requiere tocar código.
+Todas las consultas entran por WhatsApp (+56 9 3950 1924) con un mensaje ya armado según la materia. No hay
+formulario ni calendario que mantener: la abogada coordina los horarios directamente en la conversación.
+El texto de los mensajes está en lib/site.ts (mensajesWhatsapp).
 
 ## 5. Conectar las reseñas reales de Google
 
@@ -129,73 +129,27 @@ Santiago), con estilo oscuro a juego con la paleta del sitio, más un botón "C�
 ruta directamente en Google Maps. No requiere API key ni configuración. Si la oficina cambia de
 dirección, se editan los enlaces `mapa.embed` y `mapa.ruta` en `lib/site.ts`.
 
-## 9. Sistema de citas (agendamiento conectado a Google Calendar)
-
-La sección "Agenda tu hora" deja elegir la materia del caso y reservar directo en un calendario con
-disponibilidad real — sin mensajes de ida y vuelta para cuadrar un horario. Para esto se usa
-[Cal.com](https://cal.com), gratis para un solo profesional, que se conecta al Google Calendar real
-de la abogada y sincroniza la disponibilidad en tiempo real.
-
-**Por qué Cal.com y no una integración directa con la API de Google Calendar:** una integración
-directa requiere que la clienta autorice permisos de Google (OAuth) y que exista un servidor que
-gestione esos permisos de forma segura — es una pieza de infraestructura aparte, no algo que deba
-vivir en el código de un sitio de marketing. Cal.com (o Calendly, que funciona de forma muy similar)
-ya resuelve eso de forma profesional y gratuita para un solo usuario.
-
-**Pasos para conectarlo:**
-
-1. Crear una cuenta gratis en [cal.com](https://cal.com) con el correo de la abogada.
-2. En **Apps → Calendar**, conectar su Google Calendar (autoriza con su cuenta de Google; desde
-   ahí, Cal.com solo agenda en los horarios que ella deje libres).
-3. Crear **un tipo de evento por cada materia**, con el mismo slug que ya está definido en
-   `lib/site.ts` (campo `calSlug` de cada área):
-
-   | Materia | Slug a crear en Cal.com |
-   |---|---|
-   | Derecho Penal | `consulta-penal` |
-   | Derecho Civil | `consulta-civil` |
-   | Migración | `consulta-migracion` |
-   | Derecho Laboral | `consulta-laboral` |
-   | Derecho de Familia | `consulta-familia` |
-   | Juzgado de Policía Local | `consulta-policia-local` |
-   | Ley de Copropiedad | `consulta-copropiedad` |
-   | Asesoría Inmobiliaria | `consulta-inmobiliaria` |
-
-   En cada tipo de evento se define la duración (por ejemplo, 30 min) y el horario disponible —
-   distinto para cada materia si conviene, por ejemplo una consulta penal más larga que una de
-   Policía Local.
-4. Copiar el nombre de usuario de Cal.com (aparece en la URL de su perfil,
-   `cal.com/TU-USUARIO`) y agregarlo en Vercel como `NEXT_PUBLIC_CAL_USERNAME`.
-5. Volver a desplegar. La sección "Agenda tu hora" empieza a mostrar el calendario real: el
-   visitante elige la materia, ve los horarios realmente libres y reserva ahí mismo. La cita queda
-   en el Google Calendar de la abogada al instante.
-
-Sin `NEXT_PUBLIC_CAL_USERNAME` configurada, esa sección muestra en su lugar un botón para agendar
-por WhatsApp, con la materia elegida ya incluida en el mensaje — el sitio nunca se ve roto ni vacío.
-
-**Alternativa:** si se prefiere Calendly en vez de Cal.com, el reemplazo es directo: Calendly
-también se conecta a Google Calendar y ofrece un embed muy similar
-(`react-calendly` en vez de `@calcom/embed-react`); la lógica de selección de materia en
-`components/sections/Citas.tsx` no cambia, solo el componente del calendario.
-
 ## Decisiones de diseño
 
 - **Sin preloader.** El H1 se pinta en el primer frame; las animaciones ocurren sobre contenido ya
   visible, nunca lo esconden.
 - **Sin foco en precio.** Todo el texto evita hablar de honorarios o costos: la propuesta de valor
   es cercanía, trato honesto y formación verificable.
-- **"Manifiesto" como quiebre de ritmo.** Entre las ventajas y las reseñas hay una frase potente a
-  pantalla completa — evita que el scroll se sienta monótono y deja una idea memorable.
+- **Un solo llamado a la acción.** "Agendar asesoría" es el único botón de conversión y siempre termina en
+  WhatsApp. La página sigue un recorrido: entender el problema (portada) → qué hacemos (materias) → por qué
+  confiar (quiénes somos y fundadora) → actuar (bloque "Agenda tu asesoría") → seguir informándose
+  (publicaciones). El botón de la barra superior y el de la portada llevan a ese bloque; en móvil hay un botón
+  fijo que abre WhatsApp directo.
+- **Menos información a la vez.** Las materias se despliegan al tocarlas, la portada resume el proceso en tres
+  pasos y la portada solo muestra tres publicaciones (todas están en `/blog`).
 - **Reseñas de Google en vez de testimonios inventados.** En cuanto se conecta el Perfil de
   Negocio, la prueba social pasa de "confía en mí" a "mira lo que dicen en Google", que es más
   persuasivo y verificable para un visitante nuevo.
 - **Datos estructurados (JSON-LD) sin inventar calificación.** El `aggregateRating` del schema solo
   se publica cuando hay reseñas reales de Google — publicar una calificación de referencia como si
   fuera real puede penalizar el posicionamiento en buscadores.
-- **Agendamiento con disponibilidad real, no un formulario más.** "Agenda tu hora" resuelve el
-  paso que más fricción genera en un sitio de servicios: saber cuándo se puede reunir alguien.
-  Elegir la materia primero también hace que la abogada llegue a la reunión sabiendo de qué se
-  trata.
+- **Elegir la materia antes de escribir.** En "Agenda tu asesoría" la persona puede indicar su materia y el
+  mensaje de WhatsApp ya llega con ese contexto, así la abogada sabe de qué se trata desde el primer mensaje.
 - **Mapa sin configuración.** El mapa embebido por dirección y el botón "Cómo llegar" funcionan sin
   API key de Google Maps.
 - **Accesibilidad.** Foco visible, contraste AA sobre fondo oscuro, `prefers-reduced-motion`
