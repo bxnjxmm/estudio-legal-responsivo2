@@ -8,11 +8,11 @@ export default function Manifiesto() {
         <Reveal>
           <p className="font-display h-declaracion font-light text-plata/85">
             Un estudio grande te asigna a un abogado junior y te cobra como si fuera el socio.
-            <span className="text-white"> Aquí, la persona que estudia tu caso es la misma que va al tribunal.</span>
+            <span className="text-white"> Aquí, evaluamos tu caso en detalle y te explicamos con claridad tus posibilidades reales.</span>
           </p>
         </Reveal>
         <Reveal delay={0.12}>
-          <p className="mt-8 text-plata/50">Sin mesa de entrada. Sin traspasos. Sin explicar tu caso dos veces.</p>
+          <p className="mt-8 text-plata/50">Sin falsas expectativas. Sin tecnicismos innecesarios. Con lenguaje sencillo.</p>
         </Reveal>
       </div>
     </section>

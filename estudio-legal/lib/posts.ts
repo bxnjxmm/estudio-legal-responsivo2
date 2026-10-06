@@ -5,7 +5,7 @@ export const posts: Post[] = [
     slug: 'como-elegir-abogado-para-tu-caso',
     titulo: 'Cómo elegir al abogado correcto para tu caso: 5 preguntas antes de contratar',
     bajada: 'No todos los estudios trabajan igual. Estas son las preguntas que separan a un abogado comprometido de uno que solo toma el caso.',
-    categoria: 'Cómo trabajo', fecha: '12 de agosto de 2026', lectura: '6 min',
+    categoria: 'Cómo trabajamos', fecha: '12 de agosto de 2026', lectura: '6 min',
     cuerpo: [
       '¿Quién va a llevar realmente mi causa? En estudios grandes, quien firma el mandato casi nunca es quien asiste a la audiencia. Pregunta desde el inicio si tendrás una sola persona de contacto durante todo el proceso o si te irán derivando entre distintos abogados.',
       '¿Cómo me vas a mantener informado? Un buen abogado no espera a que preguntes para contarte cómo va tu causa. Pide que te digan, por escrito, cada cuánto vas a recibir novedades.',
