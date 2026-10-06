@@ -136,11 +136,16 @@ dirección, se editan los enlaces `mapa.embed` y `mapa.ruta` en `lib/site.ts`.
 - **Sin foco en precio.** Todo el texto evita hablar de honorarios o costos: la propuesta de valor
   es cercanía, trato honesto y formación verificable.
 - **Un solo llamado a la acción.** "Agendar asesoría" es el único botón principal del sitio. Los botones de la
-  portada, de la fundadora, de los artículos y del encabezado llevan al bloque `#agendar` ("Partamos por
-  entender tu caso"), donde la persona elige su materia y sale a WhatsApp. Las tarjetas de materias tienen un
-  enlace "Consultar" que preselecciona esa materia en el bloque. El botón fijo (móvil y tablet) abre WhatsApp
-  directo. Los botones persistentes se ocultan mientras haya otro botón principal a la vista, así nunca hay dos
-  a la vez.
+  fundadora, de los artículos y del encabezado llevan al bloque `#agendar` ("Tu caso merece una respuesta clara"),
+  donde la persona elige su materia y sale a WhatsApp. La tarjeta de la portada (a la derecha del título) hace lo
+  mismo en un solo paso: elige materia y abre WhatsApp directo con el mensaje armado. Las tarjetas de materias
+  tienen un enlace "Consultar" que preselecciona esa materia en el bloque. El botón fijo (móvil y tablet) abre
+  WhatsApp directo. Los botones persistentes se ocultan mientras haya otro botón principal a la vista, así nunca
+  hay dos a la vez.
+- **Efectos.** Portada: destello de luz que recorre el borde de la tarjeta, resplandor que sigue al cursor (solo
+  con mouse), subrayado que se dibuja bajo el título y cinta de materias. Todo el sitio: barra de progreso de
+  lectura en el encabezado y brillo periódico en los botones principales. Todos los efectos se apagan con
+  "reducir movimiento" (estilos en `app/globals.css`).
 - **Recorrido de la página.** Portada → materias → quiénes somos y fundadora → método → publicaciones →
   cómo trabajamos → preguntas frecuentes → agendar → contacto y ubicación.
 - **Reseñas de Google en vez de testimonios inventados.** En cuanto se conecta el Perfil de
