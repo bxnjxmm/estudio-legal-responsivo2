@@ -10,7 +10,7 @@ const pilares = [
 
 export default function QuienesSomos() {
   return (
-    <section id="quienes-somos" className="bg-marina pt-16 trama lg:pt-24">
+    <section id="quienes-somos" className="scroll-mt-20 bg-marina pt-24 trama lg:pt-32">
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid gap-8 lg:grid-cols-[.8fr_1.2fr] lg:gap-14">
           <Reveal>
@@ -30,13 +30,13 @@ export default function QuienesSomos() {
         </div>
 
         <Reveal delay={0.14}>
-          <ul className="mt-10 grid grid-cols-3 gap-px overflow-hidden rounded-2xl bg-plata/10 sm:mt-12">
+          <ul className="mt-12 grid gap-px overflow-hidden rounded-2xl bg-plata/10 sm:grid-cols-3">
             {pilares.map((p) => (
-              <li key={p.titulo} className="flex flex-col items-center gap-2.5 bg-marina px-2 py-5 text-center transition-colors duration-500 hover:bg-pizarra/40 sm:flex-row sm:gap-4 sm:p-6 sm:text-left">
+              <li key={p.titulo} className="flex items-center gap-4 bg-marina p-6 transition-colors duration-500 hover:bg-pizarra/40">
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-electrico/25 bg-electrico/10">
                   <p.icono className="h-[18px] w-[18px] text-electrico" strokeWidth={1.5} />
                 </span>
-                <span className="font-display text-[15px] leading-snug text-white sm:text-lg">{p.titulo}</span>
+                <span className="font-display text-lg text-white">{p.titulo}</span>
               </li>
             ))}
           </ul>

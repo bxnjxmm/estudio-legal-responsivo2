@@ -1,3 +1,10 @@
+// Dirección pública del sitio (enlaces canónicos, imagen para compartir y buscadores).
+// Prioridad: NEXT_PUBLIC_SITE_URL (si se define) → dominio de producción que Vercel entrega solo
+// (pasa a ser el dominio propio apenas se conecta) → localhost en desarrollo.
+const direccionPublica =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : 'http://localhost:3000');
+
 export const site = {
   marca: 'Defensas Pavez Abogados',
   fundadora: 'Baitiare Scarleth Pavez',
@@ -8,7 +15,7 @@ export const site = {
   telefonoVisible: '+56 9 3950 1924',
   email: 'defensaspavezabogados@gmail.com',
   instagram: process.env.NEXT_PUBLIC_INSTAGRAM ?? 'tu_usuario_ig',
-  dominio: 'https://tudominio.cl',
+  dominio: direccionPublica,
   // Datos de Google Business Profile — se completan al conectar reseñas reales.
   googlePlaceId: process.env.NEXT_PUBLIC_GOOGLE_PLACE_ID ?? ''
 };

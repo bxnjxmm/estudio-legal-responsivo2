@@ -16,6 +16,14 @@ body {
   overflow-x: hidden;
 }
 
+/* Entrada del texto de la portada: animación CSS (no depende de que cargue el JavaScript).
+   Con "reducir movimiento" la regla de más abajo la deja en su estado final al instante. */
+@keyframes aparece {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: none; }
+}
+.aparece { animation: aparece .8s cubic-bezier(.22, 1, .36, 1) both; animation-delay: var(--d, 0s); }
+
 /* Escala tipográfica fluida: crece con el ancho de pantalla en vez de saltar
    entre tamaños fijos por breakpoint — se ve bien en cualquier punto intermedio
    (tablets, plegables, monitores anchos), no solo en los tamaños "de catálogo". */
@@ -37,6 +45,16 @@ body {
   line-height: 1.32;
 }
 
+/* El detalle de cada tarjeta de materia se oculta hasta el hover SOLO en
+   pantallas con mouse real. En touch (celular/tablet) no existe un ":hover"
+   confiable, así que ahí el detalle queda siempre visible en vez de escondido
+   detrás de un gesto que el dispositivo no puede dar. */
+.detalle-tarjeta { max-height: 13rem; opacity: 1; }
+@media (hover: hover) and (pointer: fine) {
+  .detalle-tarjeta { max-height: 0; opacity: 0; overflow: hidden; transition: max-height .5s ease, opacity .5s ease; }
+  .group:hover .detalle-tarjeta { max-height: 13rem; opacity: 1; }
+}
+
 /* Trama de expediente: líneas verticales tenues que estructuran toda la página */
 .trama {
   background-image: linear-gradient(90deg, rgba(201,214,227,.05) 1px, transparent 1px);
@@ -48,6 +66,15 @@ body {
   border: 1px solid rgba(201,214,227,.10);
   backdrop-filter: blur(14px);
 }
+
+.halo::after {
+  content: '';
+  position: absolute; inset: -1px;
+  border-radius: inherit;
+  background: radial-gradient(420px circle at var(--mx,50%) var(--my,0%), rgba(76,141,255,.18), transparent 62%);
+  opacity: 0; transition: opacity .45s ease; pointer-events: none;
+}
+.halo:hover::after { opacity: 1; }
 
 .filo { border-top: 1px solid rgba(201,214,227,.10); }
 
