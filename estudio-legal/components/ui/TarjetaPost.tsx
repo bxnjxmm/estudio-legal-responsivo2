@@ -21,7 +21,7 @@ export default function TarjetaPost({ post, destacada = false, etiqueta, delay =
     return (
       <Reveal delay={delay} className={className}>
         <Link href={`/blog/${post.slug}`} className={`${marco} grid lg:grid-cols-[.75fr_1.25fr]`}>
-          <div className="relative flex min-h-[140px] items-center justify-center overflow-hidden bg-pizarra/50 lg:min-h-[320px]">
+          <div className="relative flex min-h-[96px] items-center justify-center overflow-hidden bg-pizarra/50 lg:min-h-[320px]">
             <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(76,141,255,.22),transparent_62%)] transition-transform duration-700 group-hover:scale-110" />
             <Icono aria-hidden className="absolute -bottom-8 -right-6 h-48 w-48 text-plata/[0.05]" strokeWidth={1} />
             <Icono aria-hidden className="relative h-14 w-14 text-electrico" strokeWidth={1.2} />

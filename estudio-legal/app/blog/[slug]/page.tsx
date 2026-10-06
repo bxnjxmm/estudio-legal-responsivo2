@@ -93,7 +93,7 @@ export default function Articulo({ params }: { params: { slug: string } }) {
             los antecedentes de cada caso.
           </p>
 
-          <aside className="vidrio mt-10 rounded-2xl p-7">
+          <aside data-oculta-fijo className="vidrio mt-10 rounded-2xl p-7">
             <h2 className="font-display text-xl text-white">¿Tu caso se parece a esto?</h2>
             <p className="mt-2 text-sm text-plata/60">Cada situación tiene matices. Escríbenos y lo revisamos con nombre y apellido.</p>
             <a

@@ -9,7 +9,7 @@ export default function Agendar() {
   const [materia, setMateria] = useState<string | null>(null);
 
   return (
-    <section id="agendar" className="relative overflow-hidden bg-noche py-16 lg:py-24">
+    <section id="agendar" data-oculta-fijo className="relative overflow-hidden bg-noche py-16 lg:py-24">
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-[360px] w-[620px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-electrico/10 blur-[120px]" />
       <div className="relative mx-auto max-w-3xl px-6">
         <Reveal>

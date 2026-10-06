@@ -10,7 +10,7 @@ export default function SobreAbogada() {
     <section id="sobre-mi" className="bg-marina pb-16 pt-12 trama lg:pb-24 lg:pt-16">
       <div className="mx-auto grid max-w-6xl gap-14 px-6 lg:grid-cols-[.8fr_1.2fr] lg:items-center">
         <Reveal>
-          <div className="relative mx-auto w-full max-w-sm lg:mx-0">
+          <div className="relative mx-auto w-full max-w-[17rem] sm:max-w-sm lg:mx-0">
             {/* Resplandor suave detrás de la foto, en el azul del sitio */}
             <div className="pointer-events-none absolute -inset-6 rounded-[2rem] bg-electrico/10 blur-3xl" />
             <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-pizarra/40 shadow-[0_30px_80px_-30px_rgba(0,0,0,.85)] ring-1 ring-inset ring-plata/15">
@@ -18,7 +18,7 @@ export default function SobreAbogada() {
                 src="/images/baitiare-pavez.jpg"
                 alt={`${site.fundadora}, abogada fundadora de ${site.marca}`}
                 fill
-                sizes="(max-width: 384px) 100vw, 384px"
+                sizes="(max-width: 640px) 272px, 384px"
                 className="object-cover object-[42%_30%]"
               />
               {/* Viraje azul y degradado inferior para que la foto se funda con el fondo de la sección */}

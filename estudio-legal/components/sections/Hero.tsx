@@ -37,7 +37,7 @@ export default function Hero() {
           </motion.p>
 
           <motion.div variants={linea} className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
-            <a href={cta.ancla} className="group inline-flex items-center gap-2 rounded-full bg-electrico px-7 py-3.5 text-sm font-medium text-noche transition hover:bg-white">
+            <a href={cta.ancla} data-oculta-fijo className="group inline-flex items-center gap-2 rounded-full bg-electrico px-7 py-3.5 text-sm font-medium text-noche transition hover:bg-white">
               {cta.etiqueta}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
@@ -50,7 +50,7 @@ export default function Hero() {
         <motion.aside variants={linea} className="vidrio relative rounded-2xl p-7 lg:sticky lg:top-28">
           <div className="absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-electrico/60 to-transparent" />
           <h2 className="font-display text-xl text-white">Así empezamos</h2>
-          <ol className="mt-6 space-y-5">
+          <ol className="mt-5 space-y-4 sm:mt-6 sm:space-y-5">
             {pasos.map((p, i) => (
               <li key={p.titulo} className="flex gap-4">
                 <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-electrico/30 bg-electrico/10 text-sm text-electrico">{i + 1}</span>
