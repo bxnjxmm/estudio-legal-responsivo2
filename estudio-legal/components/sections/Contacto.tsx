@@ -29,7 +29,7 @@ export default function Contacto() {
     }
   };
 
-  const campo = 'w-full rounded-xl border border-plata/12 bg-noche/60 px-4 py-3 text-sm text-white placeholder:text-plata/35 transition focus:border-electrico focus:outline-none';
+  const campo = 'w-full rounded-xl border border-plata/15 bg-noche/60 px-4 py-3 text-sm text-white placeholder:text-plata/35 transition focus:border-electrico focus:outline-none';
 
   return (
     <section id="contacto" className="bg-noche py-24 lg:py-32 trama">

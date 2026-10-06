@@ -1,10 +1,8 @@
 'use client';
 import { useRef } from 'react';
-import { Scale, Gavel, Plane, Briefcase, Heart, Car, Building2, Home } from 'lucide-react';
 import { areas, whatsappMateria } from '@/lib/site';
 import Reveal from '@/components/ui/Reveal';
-
-const iconos = [Gavel, Scale, Plane, Briefcase, Heart, Car, Building2, Home];
+import { iconosMateria } from '@/components/ui/iconosMateria';
 
 function Tarjeta({ area, Icono, i, className }: { area: (typeof areas)[number]; Icono: any; i: number; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -73,7 +71,7 @@ export default function Materias() {
             <Tarjeta
               key={a.slug}
               area={a}
-              Icono={iconos[i]}
+              Icono={iconosMateria[a.slug]}
               i={i}
               className={areas.length % 3 === 2 && i >= areas.length - 2 ? 'lg:col-span-3' : 'lg:col-span-2'}
             />
