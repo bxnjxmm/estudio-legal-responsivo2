@@ -24,6 +24,17 @@ body {
 }
 .aparece { animation: aparece .8s cubic-bezier(.22, 1, .36, 1) both; animation-delay: var(--d, 0s); }
 
+/* Pulso suave del botón principal de #agendar: solo si la persona no pidió "reducir movimiento"
+   (con una animación infinita, la regla de reducción más abajo la dejaría parpadeando). */
+@keyframes aura {
+  0% { box-shadow: 0 0 0 0 rgba(76,141,255,.42), 0 18px 50px -18px rgba(76,141,255,.9); }
+  70%, 100% { box-shadow: 0 0 0 16px rgba(76,141,255,0), 0 18px 50px -18px rgba(76,141,255,.9); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .aura { animation: aura 3.2s ease-out infinite; }
+  .aura:hover { animation: none; }
+}
+
 /* Escala tipográfica fluida: crece con el ancho de pantalla en vez de saltar
    entre tamaños fijos por breakpoint — se ve bien en cualquier punto intermedio
    (tablets, plegables, monitores anchos), no solo en los tamaños "de catálogo". */
