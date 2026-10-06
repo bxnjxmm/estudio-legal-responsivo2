@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import Cal, { getCalApi } from '@calcom/embed-react';
 import { CalendarClock, MessageCircle } from 'lucide-react';
-import { areas, site, whatsapp } from '@/lib/site';
+import { areas, site, whatsappMateria } from '@/lib/site';
 import Reveal from '@/components/ui/Reveal';
 
 export default function Citas() {
@@ -27,8 +27,9 @@ export default function Citas() {
         <Reveal>
           <h2 className="font-display h-seccion font-light text-white">Agenda tu hora</h2>
           <p className="mt-5 max-w-contenido text-plata/60">
-            Elige la materia de tu caso y reserva directo en el calendario. Las horas que ves acá son las que
-            están realmente disponibles — sin ida y vuelta de mensajes para cuadrar un horario.
+            {conectado
+              ? 'Elige la materia de tu caso y reserva directo en el calendario. Las horas que ves acá son las que están realmente disponibles — sin ida y vuelta de mensajes para cuadrar un horario.'
+              : 'Elige la materia de tu caso y escríbenos por WhatsApp. Te confirmamos un horario dentro de 24 horas hábiles.'}
           </p>
         </Reveal>
 
@@ -63,12 +64,12 @@ export default function Citas() {
             ) : (
               <div className="flex flex-col items-center justify-center gap-4 px-8 py-16 text-center">
                 <CalendarClock className="h-8 w-8 text-electrico" />
-                <p className="max-w-sm text-sm text-plata/55">
-                  El calendario en vivo se activa al conectar Google Calendar (ver README, &quot;Sistema de
-                  citas&quot;). Mientras tanto, agenda tu hora de <span className="text-white">{materia.nombre}</span> por WhatsApp.
+                <p className="max-w-sm text-sm leading-relaxed text-plata/55">
+                  Agenda tu asesoría de <span className="text-white">{materia.nombre}</span>: escríbenos por WhatsApp y
+                  coordinamos el día y la hora que mejor te acomode.
                 </p>
                 <a
-                  href={whatsapp(`Hola, quiero agendar una hora de ${materia.nombre}.`)}
+                  href={whatsappMateria(materia.slug)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-full bg-electrico px-6 py-3 text-sm font-medium text-noche transition hover:bg-white"
