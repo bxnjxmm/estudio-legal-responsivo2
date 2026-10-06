@@ -1,5 +1,6 @@
 'use client';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+import { ChevronDown } from 'lucide-react';
 import { areas } from '@/lib/site';
 import { preseleccionarMateria } from '@/lib/agendar';
 import Reveal from '@/components/ui/Reveal';
@@ -7,6 +8,8 @@ import { iconosMateria } from '@/components/ui/iconosMateria';
 
 function Tarjeta({ area, Icono, i, className }: { area: (typeof areas)[number]; Icono: any; i: number; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
+  // Solo en celular (<640 px): el detalle empieza plegado para que la lista de materias no sea tan larga.
+  const [abierto, setAbierto] = useState(false);
   const seguir = (e: React.MouseEvent) => {
     const r = ref.current?.getBoundingClientRect();
     if (!r) return;
@@ -26,7 +29,18 @@ function Tarjeta({ area, Icono, i, className }: { area: (typeof areas)[number]; 
           <h3 className="mt-6 font-display text-xl text-white">{area.nombre}</h3>
           <p className="mt-3 text-sm leading-relaxed text-plata/60">{area.resumen}</p>
 
-          <ul className="detalle-tarjeta mt-5 text-sm text-plata/70">
+          <button
+            type="button"
+            onClick={() => setAbierto(!abierto)}
+            aria-expanded={abierto}
+            aria-controls={`detalle-${area.slug}`}
+            className="-mb-1 mt-2 flex items-center gap-1.5 py-2.5 text-sm text-electrico transition hover:text-white sm:hidden"
+          >
+            {abierto ? 'Ocultar detalle' : 'Ver qué incluye'}
+            <ChevronDown className={`h-4 w-4 transition-transform ${abierto ? 'rotate-180' : ''}`} />
+          </button>
+
+          <ul id={`detalle-${area.slug}`} className={`detalle-tarjeta mt-3 text-sm text-plata/70 sm:mt-5 ${abierto ? 'max-sm:!max-h-52 max-sm:!opacity-100' : 'max-sm:hidden'}`}>
             {area.detalle.map((d) => (
               <li key={d} className="flex gap-2.5 py-1">
                 <span className="mt-[9px] h-px w-3 shrink-0 bg-electrico/70" />
