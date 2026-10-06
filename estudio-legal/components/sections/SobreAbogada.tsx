@@ -10,16 +10,22 @@ export default function SobreAbogada() {
     <section id="sobre-mi" className="bg-marina py-24 lg:py-32 trama">
       <div className="mx-auto grid max-w-6xl gap-14 px-6 lg:grid-cols-[.8fr_1.2fr] lg:items-center">
         <Reveal>
-          <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-2xl border border-plata/12 bg-pizarra/40 lg:mx-0">
-            <Image
-              src="/images/baitiare-pavez.jpg"
-              alt={`${site.fundadora}, abogada fundadora de ${site.marca}`}
-              fill
-              sizes="(max-width: 384px) 100vw, 384px"
-              className="object-cover object-[47%_30%]"
-            />
-            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(155deg,rgba(76,141,255,.14),transparent_55%)]" />
-            <div className="absolute -top-px left-10 right-10 h-px bg-gradient-to-r from-transparent via-electrico/50 to-transparent" />
+          <div className="relative mx-auto w-full max-w-sm lg:mx-0">
+            {/* Resplandor suave detrás de la foto, en el azul del sitio */}
+            <div className="pointer-events-none absolute -inset-6 rounded-[2rem] bg-electrico/10 blur-3xl" />
+            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-pizarra/40 shadow-[0_30px_80px_-30px_rgba(0,0,0,.85)] ring-1 ring-inset ring-plata/15">
+              <Image
+                src="/images/baitiare-pavez.jpg"
+                alt={`${site.fundadora}, abogada fundadora de ${site.marca}`}
+                fill
+                sizes="(max-width: 384px) 100vw, 384px"
+                className="object-cover object-[42%_30%]"
+              />
+              {/* Viraje azul y degradado inferior para que la foto se funda con el fondo de la sección */}
+              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(155deg,rgba(76,141,255,.16),transparent_55%)]" />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-marina/90 via-marina/40 to-transparent" />
+              <div className="absolute -top-px left-10 right-10 h-px bg-gradient-to-r from-transparent via-electrico/50 to-transparent" />
+            </div>
           </div>
         </Reveal>
 
