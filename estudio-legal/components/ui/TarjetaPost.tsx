@@ -27,7 +27,7 @@ export default function TarjetaPost({ post, destacada = false, etiqueta, delay =
             <Icono aria-hidden className="relative h-14 w-14 text-electrico" strokeWidth={1.2} />
           </div>
           <div className="flex flex-col p-7 sm:p-10">
-            <span className="text-[11px] uppercase tracking-[0.18em] text-electrico/80">{etiqueta ?? post.categoria}</span>
+            <span className="text-xs uppercase tracking-[0.18em] text-electrico/80">{etiqueta ?? post.categoria}</span>
             <h3 className="mt-4 font-display text-2xl leading-snug text-white transition group-hover:text-electrico sm:text-3xl">{post.titulo}</h3>
             <p className="mt-4 max-w-contenido leading-relaxed text-plata/60">{post.bajada}</p>
             <ul className="mt-6 hidden space-y-2.5 text-sm text-plata/70 md:block">
@@ -52,7 +52,7 @@ export default function TarjetaPost({ post, destacada = false, etiqueta, delay =
           <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(76,141,255,.18),transparent_60%)] transition-transform duration-700 group-hover:scale-110" />
           <Icono aria-hidden className="absolute -bottom-6 -right-3 h-28 w-28 text-plata/[0.05]" strokeWidth={1} />
           <Icono aria-hidden className="relative h-7 w-7 text-electrico" strokeWidth={1.4} />
-          <span className="relative text-[11px] uppercase tracking-[0.18em] text-electrico/80">{post.categoria}</span>
+          <span className="relative text-xs uppercase tracking-[0.18em] text-electrico/80">{post.categoria}</span>
         </div>
         <div className="flex flex-1 flex-col p-7">
           <h3 className="font-display text-lg leading-snug text-white transition group-hover:text-electrico">{post.titulo}</h3>

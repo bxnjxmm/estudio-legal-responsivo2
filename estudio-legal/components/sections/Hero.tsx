@@ -36,12 +36,12 @@ export default function Hero() {
             copropiedad e inmobiliario.
           </motion.p>
 
-          <motion.div variants={linea} className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
+          <motion.div variants={linea} className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-1">
             <a href={cta.ancla} data-oculta-fijo className="group inline-flex items-center gap-2 rounded-full bg-electrico px-7 py-3.5 text-sm font-medium text-noche transition hover:bg-white">
               {cta.etiqueta}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
-            <a href="#materias" className="text-sm text-plata/70 underline-offset-4 transition hover:text-white hover:underline">
+            <a href="#materias" className="inline-block py-3 text-sm text-plata/70 underline-offset-4 transition hover:text-white hover:underline">
               Ver materias que atendemos
             </a>
           </motion.div>
@@ -61,7 +61,7 @@ export default function Hero() {
               </li>
             ))}
           </ol>
-          <p className="mt-6 border-t border-plata/10 pt-4 text-[11px] text-plata/40">Lo que nos cuentes queda amparado por el secreto profesional.</p>
+          <p className="mt-6 border-t border-plata/10 pt-4 text-xs text-plata/60">Lo que nos cuentes queda amparado por el secreto profesional.</p>
         </motion.aside>
       </motion.div>
     </section>

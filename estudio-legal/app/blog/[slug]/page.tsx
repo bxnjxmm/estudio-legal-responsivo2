@@ -48,7 +48,7 @@ export default function Articulo({ params }: { params: { slug: string } }) {
       <Navbar />
       <main className="bg-noche pt-[112px]">
         <article className="mx-auto max-w-3xl px-6 py-16">
-          <Link href="/blog" className="inline-flex items-center gap-2 text-sm text-plata/50 transition hover:text-white">
+          <Link href="/blog" className="inline-flex items-center gap-2 py-3 text-sm text-plata/50 transition hover:text-white">
             <ArrowLeft className="h-4 w-4" /> Volver a publicaciones
           </Link>
 

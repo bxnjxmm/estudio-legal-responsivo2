@@ -56,7 +56,7 @@ export default function Materias() {
                             </li>
                           ))}
                         </ul>
-                        <p className="mt-3 text-[11px] leading-tight text-plata/40">{a.tribunal}</p>
+                        <p className="mt-3 text-xs leading-snug text-plata/60">{a.tribunal}</p>
                       </div>
                     </div>
                   </div>

@@ -27,7 +27,7 @@ export default function Agendar() {
                   key={a.slug}
                   onClick={() => setMateria(materia === a.slug ? null : a.slug)}
                   aria-pressed={materia === a.slug}
-                  className={`rounded-full border px-4 py-2 text-sm transition ${
+                  className={`rounded-full border px-4 py-2.5 text-sm transition ${
                     materia === a.slug ? 'border-electrico bg-electrico/15 text-white' : 'border-plata/15 text-plata/60 hover:border-plata/35 hover:text-white'
                   }`}
                 >

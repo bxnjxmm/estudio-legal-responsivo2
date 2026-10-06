@@ -17,15 +17,15 @@ export default function Ubicacion() {
             <br />
             {site.ciudad}
           </p>
-          <ul className="mt-6 space-y-3 text-sm">
+          <ul className="mt-4 text-sm">
             <li>
-              <a href={whatsapp()} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 text-plata/75 transition hover:text-white">
+              <a href={whatsapp()} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 py-3 text-plata/75 transition hover:text-white">
                 <Phone className="h-4 w-4 text-electrico" />
                 <span>{site.telefonoVisible}<span className="ml-2 text-xs text-plata/40 group-hover:text-electrico">WhatsApp</span></span>
               </a>
             </li>
             <li>
-              <a href={`mailto:${site.email}`} className="flex items-center gap-3 break-all text-plata/75 transition hover:text-white">
+              <a href={`mailto:${site.email}`} className="flex items-center gap-3 break-all py-3 text-plata/75 transition hover:text-white">
                 <Mail className="h-4 w-4 shrink-0 text-electrico" />
                 {site.email}
               </a>

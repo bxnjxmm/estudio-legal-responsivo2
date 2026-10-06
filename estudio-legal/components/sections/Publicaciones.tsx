@@ -22,7 +22,7 @@ export default function Publicaciones() {
           <ListaPublicaciones limite={3} />
         </div>
 
-        <Link href="/blog" className="group mt-8 inline-flex items-center gap-2 text-sm text-electrico transition hover:text-white">
+        <Link href="/blog" className="group mt-5 inline-flex items-center gap-2 py-3 text-sm text-electrico transition hover:text-white">
           Ver las {posts.length} publicaciones, una por materia
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
         </Link>

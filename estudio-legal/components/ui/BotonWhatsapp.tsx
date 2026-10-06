@@ -29,7 +29,7 @@ export default function BotonWhatsapp() {
       aria-label={`${cta.etiqueta} por WhatsApp`}
       aria-hidden={!visible}
       tabIndex={visible ? 0 : -1}
-      className={`fixed bottom-4 right-4 z-50 flex items-center gap-2 rounded-full bg-electrico px-4 py-2.5 text-[13px] font-medium text-noche shadow-[0_10px_40px_-10px_rgba(76,141,255,.9)] transition duration-300 hover:bg-white lg:hidden ${
+      className={`fixed bottom-4 right-4 z-50 flex items-center gap-2 rounded-full bg-electrico px-4 py-3 text-[13px] font-medium text-noche shadow-[0_10px_40px_-10px_rgba(76,141,255,.9)] transition duration-300 hover:bg-white lg:hidden ${
         visible ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-4 opacity-0'
       }`}
     >

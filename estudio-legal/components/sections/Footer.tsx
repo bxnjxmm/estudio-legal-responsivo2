@@ -8,18 +8,18 @@ export default function Footer() {
         <div>
           <p className="font-display text-xl text-white">{site.marca}</p>
           <p className="mt-2 max-w-md text-sm text-plata/50">{site.direccion} · {site.ciudad}</p>
-          <p className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm text-plata/50">
-            <a href={`tel:${site.telefono}`} className="transition hover:text-white">{site.telefonoVisible}</a>
-            <a href={`mailto:${site.email}`} className="break-all transition hover:text-white">{site.email}</a>
+          <p className="mt-1 flex flex-wrap gap-x-4 text-sm text-plata/50">
+            <a href={`tel:${site.telefono}`} className="inline-block py-3 transition hover:text-white">{site.telefonoVisible}</a>
+            <a href={`mailto:${site.email}`} className="inline-block break-all py-3 transition hover:text-white">{site.email}</a>
           </p>
         </div>
-        <div className="flex flex-col gap-3 text-sm text-plata/50 sm:items-end">
+        <div className="flex flex-col gap-1 text-sm text-plata/50 sm:items-end">
           <div className="flex gap-6">
-            <Link href="/#materias" className="transition hover:text-white">Materias</Link>
-            <Link href="/blog" className="transition hover:text-white">Publicaciones</Link>
-            <Link href="/#contacto" className="transition hover:text-white">Contacto</Link>
+            <Link href="/#materias" className="py-3 transition hover:text-white">Materias</Link>
+            <Link href="/blog" className="py-3 transition hover:text-white">Publicaciones</Link>
+            <Link href="/#contacto" className="py-3 transition hover:text-white">Contacto</Link>
           </div>
-          <p className="text-xs text-plata/35">© {new Date().getFullYear()} {site.marca}. Este sitio informa, no constituye asesoría legal.</p>
+          <p className="text-xs leading-relaxed text-plata/55">© {new Date().getFullYear()} {site.marca}. Este sitio informa, no constituye asesoría legal.</p>
         </div>
       </div>
     </footer>

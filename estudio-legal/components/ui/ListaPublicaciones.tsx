@@ -32,7 +32,7 @@ export default function ListaPublicaciones({ limite }: { limite?: number }) {
               key={f.id}
               onClick={() => setFiltro(f.id)}
               aria-pressed={filtro === f.id}
-              className={`rounded-full border px-4 py-2 text-sm transition ${
+              className={`rounded-full border px-4 py-2.5 text-sm transition ${
                 filtro === f.id ? 'border-electrico bg-electrico/15 text-white' : 'border-plata/15 text-plata/60 hover:border-plata/35 hover:text-white'
               }`}
             >
