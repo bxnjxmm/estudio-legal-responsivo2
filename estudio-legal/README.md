@@ -1,4 +1,4 @@
-﻿# Estudio Jurídico — Maqueta web premium (Next.js 14 + Tailwind + Framer Motion)
+# Estudio Jurídico — Maqueta web premium (Next.js 14 + Tailwind + Framer Motion)
 
 Esta es una **maqueta** para mostrarle a la clienta antes de cargar sus datos reales. Todo lo que
 suena a dato personal (universidad, dirección, biografía) está marcado abajo como inventado —
@@ -51,8 +51,8 @@ El texto de los mensajes está en lib/site.ts (mensajesWhatsapp).
 ## 5. Conectar las reseñas reales de Google
 
 La sección "Reseñas" ya está programada para mostrar las reseñas reales del Perfil de Negocio de
-Google apenas se configure. Mientras tanto, muestra las de referencia y lo dice discretamente al
-pie de la sección.
+Google apenas se configure. Mientras no haya reseñas reales, la sección no se muestra (no se publican
+reseñas de ejemplo).
 
 **Pasos:**
 
@@ -135,13 +135,14 @@ dirección, se editan los enlaces `mapa.embed` y `mapa.ruta` en `lib/site.ts`.
   visible, nunca lo esconden.
 - **Sin foco en precio.** Todo el texto evita hablar de honorarios o costos: la propuesta de valor
   es cercanía, trato honesto y formación verificable.
-- **Un solo llamado a la acción.** "Agendar asesoría" es el único botón de conversión y siempre termina en
-  WhatsApp. La página sigue un recorrido: entender el problema (portada) → qué hacemos (materias) → por qué
-  confiar (quiénes somos y fundadora) → actuar (bloque "Agenda tu asesoría") → seguir informándose
-  (publicaciones). El botón de la barra superior y el de la portada llevan a ese bloque; en móvil hay un botón
-  fijo que abre WhatsApp directo.
-- **Menos información a la vez.** Las materias se despliegan al tocarlas, la portada resume el proceso en tres
-  pasos y la portada solo muestra tres publicaciones (todas están en `/blog`).
+- **Un solo llamado a la acción.** "Agendar asesoría" es el único botón principal del sitio. Los botones de la
+  portada, de la fundadora, de los artículos y del encabezado llevan al bloque `#agendar` ("Partamos por
+  entender tu caso"), donde la persona elige su materia y sale a WhatsApp. Las tarjetas de materias tienen un
+  enlace "Consultar" que preselecciona esa materia en el bloque. El botón fijo (móvil y tablet) abre WhatsApp
+  directo. Los botones persistentes se ocultan mientras haya otro botón principal a la vista, así nunca hay dos
+  a la vez.
+- **Recorrido de la página.** Portada → materias → quiénes somos y fundadora → método → publicaciones →
+  cómo trabajamos → preguntas frecuentes → agendar → contacto y ubicación.
 - **Reseñas de Google en vez de testimonios inventados.** En cuanto se conecta el Perfil de
   Negocio, la prueba social pasa de "confía en mí" a "mira lo que dicen en Google", que es más
   persuasivo y verificable para un visitante nuevo.
@@ -150,6 +151,10 @@ dirección, se editan los enlaces `mapa.embed` y `mapa.ruta` en `lib/site.ts`.
   fuera real puede penalizar el posicionamiento en buscadores.
 - **Elegir la materia antes de escribir.** En "Agenda tu asesoría" la persona puede indicar su materia y el
   mensaje de WhatsApp ya llega con ese contexto, así la abogada sabe de qué se trata desde el primer mensaje.
+- **Dirección pública del sitio.** Los enlaces canónicos, la imagen para compartir y el sitemap usan el dominio de
+  producción que entrega Vercel; al conectar un dominio propio se actualizan solos (o se fija ``NEXT_PUBLIC_SITE_URL``).
+- **Imagen para compartir e íconos.** ``app/opengraph-image.jpg`` (1200×630), ``app/icon.png`` y ``app/apple-icon.png`` son
+  archivos estáticos: para cambiarlos basta reemplazarlos.
 - **Mapa sin configuración.** El mapa embebido por dirección y el botón "Cómo llegar" funcionan sin
   API key de Google Maps.
 - **Accesibilidad.** Foco visible, contraste AA sobre fondo oscuro, `prefers-reduced-motion`

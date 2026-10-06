@@ -18,6 +18,7 @@ export const metadata: Metadata = {
   description:
     'Estudio jurídico en Santiago. Defensa penal, familia, laboral, civil, migración, Policía Local, copropiedad y asesoría inmobiliaria. Evaluamos tu caso en detalle y te explicamos con claridad tus posibilidades reales.',
   keywords: ['estudio jurídico Chile', 'abogados Santiago', 'pensión de alimentos', 'despido injustificado', 'visa Chile', 'defensa penal', 'ley de copropiedad'],
+  alternates: { canonical: '/' },
   openGraph: {
     title: `${site.marca} | Estudio jurídico en Chile`,
     description: 'Asesoría legal directa y estrategia clara desde la primera reunión, en penal, civil, familia, laboral, migración, copropiedad e inmobiliario.',
@@ -26,6 +27,8 @@ export const metadata: Metadata = {
     locale: 'es_CL',
     type: 'website'
   },
+  // La imagen para compartir es app/opengraph-image.jpg; los íconos, app/icon.png y app/apple-icon.png.
+  twitter: { card: 'summary_large_image' },
   robots: { index: true, follow: true }
 };
 
@@ -37,7 +40,7 @@ const jsonLd = {
   '@type': 'LegalService',
   name: site.marca,
   founder: { '@type': 'Person', name: site.fundadora, jobTitle: 'Abogada fundadora' },
-  image: `${site.dominio}/og.jpg`,
+  image: `${site.dominio}/opengraph-image.jpg`,
   url: site.dominio,
   telephone: site.telefono,
   email: site.email,

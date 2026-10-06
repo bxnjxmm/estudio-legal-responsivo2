@@ -3,7 +3,7 @@ import Ubicacion from '@/components/sections/Ubicacion';
 
 export default function Contacto() {
   return (
-    <section id="contacto" data-oculta-fijo className="bg-noche py-16 trama lg:py-24">
+    <section id="contacto" className="scroll-mt-20 bg-noche py-24 trama lg:py-32">
       <div className="mx-auto max-w-6xl px-6">
         <Reveal>
           <h2 className="font-display h-seccion font-light text-white">Contacto y ubicación</h2>

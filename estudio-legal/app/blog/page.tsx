@@ -6,6 +6,7 @@ import ListaPublicaciones from '@/components/ui/ListaPublicaciones';
 
 export const metadata: Metadata = {
   title: 'Publicaciones | Derecho chileno explicado en simple',
+  alternates: { canonical: '/blog' },
   description: 'Guías sobre plazos, derechos y procedimientos en materias penales, civiles, migratorias, laborales, de familia, Policía Local, copropiedad e inmobiliarias en Chile.'
 };
 

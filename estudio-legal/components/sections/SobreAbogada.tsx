@@ -1,16 +1,16 @@
 import Image from 'next/image';
-import { GraduationCap, ScrollText, Award, Globe } from 'lucide-react';
-import { site, formacion } from '@/lib/site';
+import { ArrowRight, GraduationCap, ScrollText, Award, Globe } from 'lucide-react';
+import { cta, site, formacion } from '@/lib/site';
 import Reveal from '@/components/ui/Reveal';
 
 const iconos = [GraduationCap, ScrollText, Award, Globe];
 
 export default function SobreAbogada() {
   return (
-    <section id="sobre-mi" className="bg-marina pb-16 pt-12 trama lg:pb-24 lg:pt-16">
+    <section id="sobre-mi" className="scroll-mt-20 bg-marina py-24 lg:py-32 trama">
       <div className="mx-auto grid max-w-6xl gap-14 px-6 lg:grid-cols-[.8fr_1.2fr] lg:items-center">
         <Reveal>
-          <div className="relative mx-auto w-full max-w-[17rem] sm:max-w-sm lg:mx-0">
+          <div className="relative mx-auto w-full max-w-sm lg:mx-0">
             {/* Resplandor suave detrás de la foto, en el azul del sitio */}
             <div className="pointer-events-none absolute -inset-6 rounded-[2rem] bg-electrico/10 blur-3xl" />
             <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-pizarra/40 shadow-[0_30px_80px_-30px_rgba(0,0,0,.85)] ring-1 ring-inset ring-plata/15">
@@ -18,7 +18,7 @@ export default function SobreAbogada() {
                 src="/images/baitiare-pavez.jpg"
                 alt={`${site.fundadora}, abogada fundadora de ${site.marca}`}
                 fill
-                sizes="(max-width: 640px) 272px, 384px"
+                sizes="(max-width: 384px) 100vw, 384px"
                 className="object-cover object-[42%_30%]"
               />
               {/* Viraje azul y degradado inferior para que la foto se funda con el fondo de la sección */}
@@ -56,6 +56,14 @@ export default function SobreAbogada() {
             “Buscamos explicarte tu causa con un lenguaje sencillo. Agenda una asesoría con nuestro estudio jurídico y te
             ayudamos a resolverlo.”
           </blockquote>
+          <a
+            href={cta.ancla}
+            data-cta-zona
+            className="group mt-8 inline-flex items-center gap-2 rounded-full bg-electrico px-7 py-3.5 text-sm font-medium text-noche transition hover:bg-white"
+          >
+            {cta.etiqueta}
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </a>
         </Reveal>
       </div>
     </section>

@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, Check, MessageCircle } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Check } from 'lucide-react';
 import { posts, getPost, minutosLectura, relacionados } from '@/lib/posts';
-import { cta, mensajesWhatsapp, site, whatsapp } from '@/lib/site';
+import { cta, site } from '@/lib/site';
+import { enlaceAgendar } from '@/lib/agendar';
 import Navbar from '@/components/sections/Navbar';
 import Footer from '@/components/sections/Footer';
 import BotonWhatsapp from '@/components/ui/BotonWhatsapp';
@@ -20,7 +21,16 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   return {
     title: post.titulo,
     description: post.bajada,
-    openGraph: { title: post.titulo, description: post.bajada, type: 'article', publishedTime: post.fechaISO, authors: [site.marca] }
+    alternates: { canonical: `/blog/${post.slug}` },
+    openGraph: {
+      title: post.titulo,
+      description: post.bajada,
+      type: 'article',
+      publishedTime: post.fechaISO,
+      authors: [site.marca],
+      images: [{ url: '/opengraph-image.jpg', width: 1200, height: 630 }]
+    },
+    twitter: { card: 'summary_large_image', images: ['/opengraph-image.jpg'] }
   };
 }
 
@@ -29,9 +39,6 @@ export default function Articulo({ params }: { params: { slug: string } }) {
   if (!post) notFound();
 
   const Icono = iconosMateria[post.materia ?? 'general'];
-  const frase = post.materia
-    ? `${mensajesWhatsapp.materias[post.materia]} Leí el artículo "${post.titulo}".`
-    : `Leí el artículo "${post.titulo}" y tengo una consulta.`;
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -48,7 +55,7 @@ export default function Articulo({ params }: { params: { slug: string } }) {
       <Navbar />
       <main className="bg-noche pt-[112px]">
         <article className="mx-auto max-w-3xl px-6 py-16">
-          <Link href="/blog" className="inline-flex items-center gap-2 text-sm text-plata/50 transition hover:text-white">
+          <Link href="/blog" className="inline-flex items-center gap-2 py-3 text-sm text-plata/50 transition hover:text-white">
             <ArrowLeft className="h-4 w-4" /> Volver a publicaciones
           </Link>
 
@@ -93,18 +100,18 @@ export default function Articulo({ params }: { params: { slug: string } }) {
             los antecedentes de cada caso.
           </p>
 
-          <aside data-oculta-fijo className="vidrio mt-10 rounded-2xl p-7">
+          <aside className="vidrio mt-10 rounded-2xl p-7">
             <h2 className="font-display text-xl text-white">¿Tu caso se parece a esto?</h2>
             <p className="mt-2 text-sm text-plata/60">Cada situación tiene matices. Escríbenos y lo revisamos con nombre y apellido.</p>
-            <a
-              href={whatsapp(mensajesWhatsapp.plantilla(frase))}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-5 inline-flex items-center gap-2 rounded-full bg-electrico px-6 py-3 text-sm font-medium text-noche transition hover:bg-white"
+            {/* Mismo CTA y mismo destino que el resto del sitio; la materia del artículo llega preseleccionada. */}
+            <Link
+              href={enlaceAgendar(post.materia)}
+              data-cta-zona
+              className="group mt-5 inline-flex items-center gap-2 rounded-full bg-electrico px-7 py-3.5 text-sm font-medium text-noche transition hover:bg-white"
             >
-              <MessageCircle className="h-4 w-4" />
               {cta.etiqueta}
-            </a>
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
           </aside>
         </article>
 
