@@ -4,11 +4,11 @@ import Link from 'next/link';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import Marca from '@/components/ui/Marca';
+import { cta } from '@/lib/site';
 
 const enlaces = [
   { href: '/#materias', label: 'Materias' },
   { href: '/#quienes-somos', label: 'Quiénes somos' },
-  { href: '/#resenas', label: 'Reseñas' },
   { href: '/blog', label: 'Publicaciones' },
   { href: '/#contacto', label: 'Contacto' }
 ];
@@ -34,8 +34,8 @@ export default function Navbar() {
               {e.label}
             </Link>
           ))}
-          <Link href="/#citas" className="rounded-full border border-electrico/40 bg-electrico/10 px-5 py-2 text-sm text-white transition hover:bg-electrico hover:text-noche">
-            Agendar hora
+          <Link href={cta.ancla} className="rounded-full bg-electrico px-5 py-2 text-sm font-medium text-noche transition hover:bg-white">
+            {cta.etiqueta}
           </Link>
         </div>
         <button onClick={() => setAbierto(!abierto)} className="text-plata lg:hidden" aria-label="Abrir menú">
@@ -57,8 +57,8 @@ export default function Navbar() {
                   {e.label}
                 </Link>
               ))}
-              <Link href="/#citas" onClick={() => setAbierto(false)} className="rounded-full bg-electrico px-5 py-2 text-center text-sm font-medium text-noche">
-                Agendar hora
+              <Link href={cta.ancla} onClick={() => setAbierto(false)} className="rounded-full bg-electrico px-5 py-2 text-center text-sm font-medium text-noche">
+                {cta.etiqueta}
               </Link>
             </div>
           </motion.div>

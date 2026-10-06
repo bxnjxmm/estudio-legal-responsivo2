@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, ArrowRight, Check } from 'lucide-react';
+import { ArrowLeft, Check, MessageCircle } from 'lucide-react';
 import { posts, getPost, minutosLectura, relacionados } from '@/lib/posts';
-import { mensajesWhatsapp, site, whatsapp } from '@/lib/site';
+import { cta, mensajesWhatsapp, site, whatsapp } from '@/lib/site';
 import Navbar from '@/components/sections/Navbar';
 import Footer from '@/components/sections/Footer';
 import BotonWhatsapp from '@/components/ui/BotonWhatsapp';
@@ -96,20 +96,15 @@ export default function Articulo({ params }: { params: { slug: string } }) {
           <aside className="vidrio mt-10 rounded-2xl p-7">
             <h2 className="font-display text-xl text-white">¿Tu caso se parece a esto?</h2>
             <p className="mt-2 text-sm text-plata/60">Cada situación tiene matices. Escríbenos y lo revisamos con nombre y apellido.</p>
-            <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3">
-              <a
-                href={whatsapp(mensajesWhatsapp.plantilla(frase))}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block rounded-full bg-electrico px-6 py-3 text-sm font-medium text-noche transition hover:bg-white"
-              >
-                Consultar por WhatsApp
-              </a>
-              <Link href="/#citas" className="group inline-flex items-center gap-2 text-sm text-electrico transition hover:text-white">
-                Agendar una asesoría
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </div>
+            <a
+              href={whatsapp(mensajesWhatsapp.plantilla(frase))}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 inline-flex items-center gap-2 rounded-full bg-electrico px-6 py-3 text-sm font-medium text-noche transition hover:bg-white"
+            >
+              <MessageCircle className="h-4 w-4" />
+              {cta.etiqueta}
+            </a>
           </aside>
         </article>
 

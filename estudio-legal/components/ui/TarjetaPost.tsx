@@ -30,7 +30,7 @@ export default function TarjetaPost({ post, destacada = false, etiqueta, delay =
             <span className="text-[11px] uppercase tracking-[0.18em] text-electrico/80">{etiqueta ?? post.categoria}</span>
             <h3 className="mt-4 font-display text-2xl leading-snug text-white transition group-hover:text-electrico sm:text-3xl">{post.titulo}</h3>
             <p className="mt-4 max-w-contenido leading-relaxed text-plata/60">{post.bajada}</p>
-            <ul className="mt-6 space-y-2.5 text-sm text-plata/70">
+            <ul className="mt-6 hidden space-y-2.5 text-sm text-plata/70 md:block">
               {post.claves.slice(0, 3).map((c) => (
                 <li key={c} className="flex gap-3">
                   <Check className="mt-0.5 h-4 w-4 shrink-0 text-electrico" />

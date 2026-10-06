@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { ArrowRight, GraduationCap, ScrollText, Award, Globe } from 'lucide-react';
+import { GraduationCap, ScrollText, Award, Globe } from 'lucide-react';
 import { site, formacion } from '@/lib/site';
 import Reveal from '@/components/ui/Reveal';
 
@@ -7,7 +7,7 @@ const iconos = [GraduationCap, ScrollText, Award, Globe];
 
 export default function SobreAbogada() {
   return (
-    <section id="sobre-mi" className="bg-marina py-24 lg:py-32 trama">
+    <section id="sobre-mi" className="bg-marina pb-16 pt-12 trama lg:pb-24 lg:pt-16">
       <div className="mx-auto grid max-w-6xl gap-14 px-6 lg:grid-cols-[.8fr_1.2fr] lg:items-center">
         <Reveal>
           <div className="relative mx-auto w-full max-w-sm lg:mx-0">
@@ -56,10 +56,6 @@ export default function SobreAbogada() {
             “Buscamos explicarte tu causa con un lenguaje sencillo. Agenda una asesoría con nuestro estudio jurídico y te
             ayudamos a resolverlo.”
           </blockquote>
-          <a href="#citas" className="group mt-6 inline-flex items-center gap-2 text-sm text-electrico transition hover:text-white">
-            Agendar asesoría
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </a>
         </Reveal>
       </div>
     </section>
