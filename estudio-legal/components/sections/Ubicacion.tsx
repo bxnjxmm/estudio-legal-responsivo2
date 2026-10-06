@@ -8,7 +8,7 @@ const filtroOscuro = 'invert(92%) hue-rotate(180deg) saturate(0.7) brightness(0.
 export default function Ubicacion() {
   return (
     <div className="mt-10 grid gap-6 lg:grid-cols-[1fr_1.3fr]">
-      <div className="vidrio flex h-full flex-col justify-between rounded-2xl p-8">
+      <div className="vidrio flex h-full flex-col justify-between rounded-2xl p-6 sm:p-8">
         <div>
           <MapPin className="h-5 w-5 text-electrico" />
           <p className="mt-4 font-display text-xl text-white">{site.marca}</p>
@@ -25,7 +25,7 @@ export default function Ubicacion() {
               </a>
             </li>
             <li>
-              <a href={`mailto:${site.email}`} className="flex items-center gap-3 break-all py-3 text-plata/75 transition hover:text-white">
+              <a href={`mailto:${site.email}`} className="flex items-center gap-3 break-words py-3 text-plata/75 transition hover:text-white">
                 <Mail className="h-4 w-4 shrink-0 text-electrico" />
                 {site.email}
               </a>
