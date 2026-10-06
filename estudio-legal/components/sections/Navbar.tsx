@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import Marca from '@/components/ui/Marca';
 import { cta } from '@/lib/site';
@@ -19,6 +19,9 @@ export default function Navbar() {
   const [abierto, setAbierto] = useState(false);
   // Mientras haya otro botón principal de agendar a la vista, el del encabezado se oculta.
   const ctaEnVista = useCtaEnVista();
+  // Barra fina de progreso de lectura en el borde inferior del encabezado.
+  const { scrollYProgress } = useScroll();
+  const progreso = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 });
 
   useEffect(() => {
     const onScroll = () => setFijo(window.scrollY > 24);
@@ -83,6 +86,11 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
+      <motion.div
+        aria-hidden
+        style={{ scaleX: progreso }}
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-[2px] origin-left bg-gradient-to-r from-electrico via-[#9CC0FF] to-electrico"
+      />
     </header>
   );
 }

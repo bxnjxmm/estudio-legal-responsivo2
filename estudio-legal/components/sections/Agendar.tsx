@@ -88,10 +88,10 @@ export default function Agendar() {
                     </span>
                     <p className="mt-6 text-xs uppercase tracking-[0.18em] text-plata/55">{area ? 'Tu asesoría de' : 'Primera conversación'}</p>
                     <h3 className="mt-2 text-balance font-display text-2xl font-light text-white sm:text-[1.75rem] sm:leading-snug">
-                      {area ? area.nombre : 'Partamos por entender tu caso'}
+                      {area ? area.nombre : 'Cuéntanos qué te pasó'}
                     </h3>
                     <p className="mt-4 max-w-md leading-relaxed text-plata/65">
-                      {area ? area.resumen : 'Elige tu materia para que tu mensaje llegue con contexto, o escríbenos directo y cuéntanos qué pasó.'}
+                      {area ? area.resumen : 'Elige tu materia para que tu mensaje llegue con contexto, o escríbenos directo y te orientamos con franqueza.'}
                     </p>
                     {area && (
                       <p className="mt-5 flex items-start gap-2.5 text-sm leading-relaxed text-plata/55">
@@ -108,7 +108,7 @@ export default function Agendar() {
                   href={materia ? whatsappMateria(materia) : whatsapp()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="aura group inline-flex w-full items-center justify-center gap-3 rounded-full bg-electrico px-7 py-4 text-base font-medium text-noche shadow-[0_18px_50px_-18px_rgba(76,141,255,.9)] transition duration-300 hover:-translate-y-0.5 hover:bg-white"
+                  className="aura brillo group inline-flex w-full items-center justify-center gap-3 rounded-full bg-electrico px-7 py-4 text-base font-medium text-noche shadow-[0_18px_50px_-18px_rgba(76,141,255,.9)] transition duration-300 hover:-translate-y-0.5 hover:bg-white"
                 >
                   <IconoWhatsapp className="h-5 w-5 shrink-0" />
                   {cta.etiqueta}
