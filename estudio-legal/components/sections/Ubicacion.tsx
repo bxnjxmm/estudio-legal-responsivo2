@@ -43,7 +43,7 @@ export default function Ubicacion() {
         </a>
       </div>
 
-      <div className="relative h-72 overflow-hidden rounded-2xl border border-plata/10 bg-pizarra/40 lg:h-auto lg:min-h-[320px]">
+      <div className="relative h-60 overflow-hidden rounded-2xl sm:h-72 border border-plata/10 bg-pizarra/40 lg:h-auto lg:min-h-[320px]">
         <iframe
           src={mapa.embed}
           title={`Mapa de ${site.marca}`}

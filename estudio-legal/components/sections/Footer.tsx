@@ -3,7 +3,7 @@ import { site } from '@/lib/site';
 
 export default function Footer() {
   return (
-    <footer className="border-t border-plata/10 bg-marina py-14">
+    <footer data-oculta-fijo className="border-t border-plata/10 bg-marina py-14">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="font-display text-xl text-white">{site.marca}</p>

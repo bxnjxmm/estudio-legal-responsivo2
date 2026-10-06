@@ -39,7 +39,7 @@ export default function Materias() {
                     </span>
                     <span className="min-w-0 flex-1">
                       <span className="block font-display text-lg text-white">{a.nombre}</span>
-                      <span className="mt-1 block text-sm leading-snug text-plata/55">{a.resumen}</span>
+                      <span className="mt-1 hidden text-sm leading-snug text-plata/55 sm:block">{a.resumen}</span>
                     </span>
                     <ChevronDown className={`h-5 w-5 shrink-0 text-plata/40 transition-transform duration-300 ${abierto ? 'rotate-180 text-electrico' : ''}`} />
                   </button>
@@ -47,6 +47,7 @@ export default function Materias() {
                   <div id={`materia-${a.slug}`} className={`grid transition-all duration-300 ${abierto ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
                     <div className="overflow-hidden">
                       <div className="border-t border-plata/10 px-5 pb-5 pt-4">
+                        <p className="mb-3 text-sm leading-relaxed text-plata/60 sm:hidden">{a.resumen}</p>
                         <ul className="space-y-1 text-sm text-plata/70">
                           {a.detalle.map((d) => (
                             <li key={d} className="flex gap-2.5 py-1">

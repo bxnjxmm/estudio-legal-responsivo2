@@ -51,7 +51,13 @@ export default function ListaPublicaciones({ limite }: { limite?: number }) {
       {resto.length > 0 && (
         <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-6" key={`resto-${filtro}`}>
           {resto.map((p, i) => (
-            <TarjetaPost key={p.slug} post={p} delay={i * 0.05} className={columnas(i, resto.length)} />
+            <TarjetaPost
+              key={p.slug}
+              post={p}
+              delay={i * 0.05}
+              // En la portada y en celular solo se muestra la destacada y una más: el resto está en /blog.
+              className={`${columnas(i, resto.length)}${limite && i >= 1 ? ' hidden sm:block' : ''}`}
+            />
           ))}
         </div>
       )}
