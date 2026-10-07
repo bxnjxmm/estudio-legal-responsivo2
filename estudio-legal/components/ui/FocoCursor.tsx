@@ -2,7 +2,9 @@
 import { useEffect, useRef } from 'react';
 
 // Resplandor que sigue al cursor sobre la sección que lo contiene (debe ser `relative`).
-// Solo en pantallas con mouse y sin "reducir movimiento"; en touch no se dibuja.
+// Escucha en toda la ventana —no solo en la sección— para que también siga al cursor cuando pasa por el
+// encabezado fijo (logo y menú), que va por encima de la portada. Solo en pantallas con mouse y sin
+// "reducir movimiento"; en touch no se dibuja.
 export default function FocoCursor() {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -15,23 +17,27 @@ export default function FocoCursor() {
 
     let cuadro = 0;
     const mover = (e: PointerEvent) => {
-      const r = seccion.getBoundingClientRect();
       cancelAnimationFrame(cuadro);
       cuadro = requestAnimationFrame(() => {
-        foco.style.setProperty('--mx', `${e.clientX - r.left}px`);
-        foco.style.setProperty('--my', `${e.clientY - r.top}px`);
-        foco.style.opacity = '1';
+        const r = seccion.getBoundingClientRect();
+        const dentro = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
+        if (dentro) {
+          foco.style.setProperty('--mx', `${e.clientX - r.left}px`);
+          foco.style.setProperty('--my', `${e.clientY - r.top}px`);
+        }
+        foco.style.opacity = dentro ? '1' : '0';
       });
     };
     const salir = () => {
+      cancelAnimationFrame(cuadro);
       foco.style.opacity = '0';
     };
-    seccion.addEventListener('pointermove', mover);
-    seccion.addEventListener('pointerleave', salir);
+    window.addEventListener('pointermove', mover, { passive: true });
+    document.documentElement.addEventListener('pointerleave', salir);
     return () => {
       cancelAnimationFrame(cuadro);
-      seccion.removeEventListener('pointermove', mover);
-      seccion.removeEventListener('pointerleave', salir);
+      window.removeEventListener('pointermove', mover);
+      document.documentElement.removeEventListener('pointerleave', salir);
     };
   }, []);
 

@@ -135,13 +135,17 @@ dirección, se editan los enlaces `mapa.embed` y `mapa.ruta` en `lib/site.ts`.
   visible, nunca lo esconden.
 - **Sin foco en precio.** Todo el texto evita hablar de honorarios o costos: la propuesta de valor
   es cercanía, trato honesto y formación verificable.
-- **Un solo llamado a la acción.** "Agendar asesoría" es el único botón principal del sitio. Los botones de la
-  fundadora, de los artículos y del encabezado llevan al bloque `#agendar` ("Tu caso merece una respuesta clara"),
-  donde la persona elige su materia y sale a WhatsApp. La tarjeta de la portada (a la derecha del título) hace lo
-  mismo en un solo paso: elige materia y abre WhatsApp directo con el mensaje armado. Las tarjetas de materias
-  tienen un enlace "Consultar" que preselecciona esa materia en el bloque. El botón fijo (móvil y tablet) abre
-  WhatsApp directo. Los botones persistentes se ocultan mientras haya otro botón principal a la vista, así nunca
-  hay dos a la vez.
+- **Un solo llamado a la acción.** "Agendar asesoría" es el único botón principal del sitio y **todos** llevan al
+  bloque `#agendar` ("Tu caso merece una respuesta clara"), el único lugar donde se agenda: la persona elige su
+  materia y desde ahí sale a WhatsApp con el mensaje armado. Eso incluye el botón del encabezado, la tarjeta de la
+  portada (elige materia y baja al bloque con ella ya seleccionada), el de la fundadora, el final de cada artículo,
+  el botón fijo (móvil y tablet) y el enlace de las preguntas frecuentes. Las tarjetas de materias tienen un enlace
+  "Consultar" que preselecciona esa materia en el bloque. Los botones persistentes se ocultan mientras haya otro
+  botón principal a la vista, así nunca hay dos a la vez.
+- **Logo.** El monograma DP (`public/images/logo-dp.png`, blanco sobre fondo transparente) va a la izquierda de la
+  marca en el encabezado; al pasar el cursor crece, se ilumina y la balanza se mece. El favicon (`app/icon.png` y
+  `app/apple-icon.png`) es el mismo monograma sobre el azul marino original, para que se vea en pestañas claras y
+  oscuras. El resplandor que sigue al cursor en la portada también funciona sobre el encabezado.
 - **Efectos.** Portada: destello de luz que recorre el borde de la tarjeta, resplandor que sigue al cursor (solo
   con mouse), subrayado que se dibuja bajo el título y cinta de materias. Todo el sitio: barra de progreso de
   lectura en el encabezado y brillo periódico en los botones principales. Todos los efectos se apagan con

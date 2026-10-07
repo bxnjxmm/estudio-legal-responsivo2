@@ -1,12 +1,12 @@
 'use client';
 import { useState } from 'react';
-import { ArrowRight } from 'lucide-react';
-import { areas, cta, whatsapp, whatsappMateria } from '@/lib/site';
-import IconoWhatsapp from '@/components/ui/IconoWhatsapp';
+import { ArrowRight, CalendarCheck } from 'lucide-react';
+import { areas, cta } from '@/lib/site';
+import { preseleccionarMateria } from '@/lib/agendar';
 
-// Tarjeta para agendar de la portada: la persona elige su materia (opcional) y sale directo a WhatsApp
-// con el mensaje ya armado. Es el botón principal de la portada (`data-cta-zona`: mientras está a la vista,
-// el CTA del encabezado y el botón flotante se ocultan).
+// Tarjeta para agendar de la portada: la persona elige su materia (opcional) y el botón la lleva al bloque
+// #agendar —el único lugar donde se agenda— con esa materia ya seleccionada. Es el botón principal de la
+// portada (`data-cta-zona`: mientras está a la vista, el CTA del encabezado y el botón flotante se ocultan).
 export default function HeroAgenda() {
   const [materia, setMateria] = useState<string | null>(null);
 
@@ -50,18 +50,16 @@ export default function HeroAgenda() {
         </div>
 
         <a
-          href={materia ? whatsappMateria(materia) : whatsapp()}
-          target="_blank"
-          rel="noopener noreferrer"
+          href={cta.ancla}
+          onClick={() => materia && preseleccionarMateria(materia)}
           className="aura brillo group mt-7 flex w-full items-center justify-center gap-3 rounded-full bg-electrico px-7 py-4 text-base font-medium text-noche shadow-[0_18px_50px_-18px_rgba(76,141,255,.9)] transition duration-300 hover:-translate-y-0.5 hover:bg-white"
         >
-          <IconoWhatsapp className="h-5 w-5 shrink-0" />
+          <CalendarCheck className="h-5 w-5 shrink-0" />
           {cta.etiqueta}
-          <span className="sr-only"> por WhatsApp</span>
           <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" />
         </a>
         <p className="mt-4 text-center text-xs leading-relaxed text-plata/55">
-          Se abre WhatsApp con tu mensaje ya escrito. Lo que nos cuentes queda amparado por el secreto profesional.
+          Seguimos al paso final para agendar tu consulta. Lo que nos cuentes queda amparado por el secreto profesional.
         </p>
       </div>
     </div>

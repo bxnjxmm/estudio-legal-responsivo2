@@ -7,7 +7,7 @@ import { cta, site } from '@/lib/site';
 import { enlaceAgendar } from '@/lib/agendar';
 import Navbar from '@/components/sections/Navbar';
 import Footer from '@/components/sections/Footer';
-import BotonWhatsapp from '@/components/ui/BotonWhatsapp';
+import BotonAgendar from '@/components/ui/BotonAgendar';
 import TarjetaPost from '@/components/ui/TarjetaPost';
 import { iconosMateria } from '@/components/ui/iconosMateria';
 
@@ -125,7 +125,7 @@ export default function Articulo({ params }: { params: { slug: string } }) {
         </section>
       </main>
       <Footer />
-      <BotonWhatsapp />
+      <BotonAgendar />
     </>
   );
 }

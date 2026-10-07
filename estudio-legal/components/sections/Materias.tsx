@@ -40,7 +40,7 @@ function Tarjeta({ area, Icono, i, className }: { area: (typeof areas)[number]; 
             <ChevronDown className={`h-4 w-4 transition-transform ${abierto ? 'rotate-180' : ''}`} />
           </button>
 
-          <ul id={`detalle-${area.slug}`} className={`detalle-tarjeta mt-3 text-sm text-plata/70 sm:mt-5 ${abierto ? 'max-sm:!max-h-52 max-sm:!opacity-100' : 'max-sm:hidden'}`}>
+          <ul id={`detalle-${area.slug}`} className={`detalle-tarjeta mt-3 text-sm text-plata/70 sm:mt-5 ${abierto ? 'max-sm:!max-h-72 max-sm:!opacity-100' : 'max-sm:hidden'}`}>
             {area.detalle.map((d) => (
               <li key={d} className="flex gap-2.5 py-1">
                 <span className="mt-[9px] h-px w-3 shrink-0 bg-electrico/70" />
