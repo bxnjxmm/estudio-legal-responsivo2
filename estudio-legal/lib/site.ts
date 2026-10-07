@@ -45,7 +45,7 @@ export const mensajesWhatsapp = {
     penal: 'Necesito asesoría en una causa penal (denuncia, formalización o defensa).',
     civil: 'Tengo un tema civil (contratos, cobros, indemnizaciones o herencias).',
     migracion: 'Necesito ayuda con un trámite migratorio (visa, permanencia definitiva o regularización).',
-    laboral: 'Tengo un problema laboral (despido, autodespido o cobro de prestaciones).',
+    laboral: 'Tengo un problema laboral (despido, despido indirecto o cobro de prestaciones).',
     familia: 'Necesito asesoría en derecho de familia (pensión de alimentos, cuidado personal, relación directa o divorcio).',
     'policia-local': 'Tengo una causa en el Juzgado de Policía Local (tránsito, accidente, Ley del Consumidor o multa).',
     copropiedad: 'Tengo un problema de copropiedad (gastos comunes, administración o conflicto con la comunidad).',
@@ -64,10 +64,10 @@ export const enlaceResenaGoogle = site.googlePlaceId
 
 // chip: nombre corto de la materia, para botones y filtros.
 export const areas = [
-  { slug: 'penal', chip: 'Penal', nombre: 'Derecho Penal', resumen: 'Defensa en control de detención, formalización, juicio oral y querellas.', detalle: ['Control de detención y medidas cautelares', 'Querellas por estafa, lesiones y delitos sexuales', 'Salidas alternativas y procedimiento abreviado'], tribunal: 'Juzgados de Garantía y Tribunal Oral en lo Penal' },
+  { slug: 'penal', chip: 'Penal', nombre: 'Derecho Penal', resumen: 'Defensa en control de detención, formalización, juicio oral y querellas.', detalle: ['Control de detención y medidas cautelares', 'Querellas por estafa, lesiones y delitos sexuales', 'Salidas alternativas y procedimiento abreviado', 'Responsabilidad penal adolescente', 'Ley 18.216 de penas sustitutivas'], tribunal: 'Juzgados de Garantía y Tribunal Oral en lo Penal' },
   { slug: 'civil', chip: 'Civil', nombre: 'Derecho Civil', resumen: 'Contratos, cobros, arriendos, posesión efectiva y responsabilidad civil.', detalle: ['Juicios de arrendamiento y precario', 'Cobro de pagarés y facturas', 'Posesión efectiva y particiones'], tribunal: 'Juzgados Civiles' },
   { slug: 'migracion', chip: 'Migración', nombre: 'Migración', resumen: 'Visas, permanencia definitiva, recursos y regularización ante el SERMIG.', detalle: ['Visa temporal y por vínculo', 'Permanencia definitiva y nacionalización', 'Recursos contra expulsión'], tribunal: 'Servicio Nacional de Migraciones y Cortes de Apelaciones' },
-  { slug: 'laboral', chip: 'Laboral', nombre: 'Derecho Laboral', resumen: 'Despido injustificado, autodespido, tutela de derechos y cobro de prestaciones.', detalle: ['Demanda por despido injustificado', 'Autodespido y tutela laboral', 'Accidentes del trabajo'], tribunal: 'Juzgados de Letras del Trabajo' },
+  { slug: 'laboral', chip: 'Laboral', nombre: 'Derecho Laboral', resumen: 'Despido injustificado, despido indirecto, tutela de derechos y cobro de prestaciones.', detalle: ['Demanda por despido injustificado', 'Despido indirecto y tutela laboral', 'Accidentes del trabajo'], tribunal: 'Juzgados de Letras del Trabajo' },
   { slug: 'familia', chip: 'Familia', nombre: 'Derecho de Familia', resumen: 'Pensión de alimentos, cuidado personal, relación directa y regular, y divorcios.', detalle: ['Alimentos, rebaja y cumplimiento', 'Cuidado personal y visitas', 'Divorcio de mutuo acuerdo o unilateral'], tribunal: 'Juzgados de Familia' },
   { slug: 'policia-local', chip: 'Policía Local', nombre: 'Juzgado de Policía Local', resumen: 'Infracciones de tránsito, accidentes, Ley del Consumidor y multas municipales.', detalle: ['Accidentes de tránsito e indemnizaciones', 'Reclamos por Ley del Consumidor', 'Infracciones y licencias'], tribunal: 'Juzgados de Policía Local' },
   { slug: 'copropiedad', chip: 'Copropiedad', nombre: 'Ley de Copropiedad', resumen: 'Gastos comunes, administración, reglamentos de copropiedad y conflictos entre vecinos y comunidad.', detalle: ['Cobro y reclamo de gastos comunes', 'Conflictos con la administración o el comité', 'Infracciones al reglamento de copropiedad'], tribunal: 'Juzgados de Policía Local y tribunales civiles' },

@@ -12,7 +12,7 @@ import Faq from '@/components/sections/Faq';
 import Agendar from '@/components/sections/Agendar';
 import Contacto from '@/components/sections/Contacto';
 import Footer from '@/components/sections/Footer';
-import BotonWhatsapp from '@/components/ui/BotonWhatsapp';
+import BotonAgendar from '@/components/ui/BotonAgendar';
 import { obtenerResenas, enlaceEscribirResena } from '@/lib/reviews';
 import { faq } from '@/lib/faq';
 import { site } from '@/lib/site';
@@ -20,8 +20,8 @@ import { site } from '@/lib/site';
 export default async function Home() {
   const resumen = await obtenerResenas();
 
-  // La calificación agregada solo se publica en el schema cuando es real:
-  // evita declarar ante buscadores una calificación de referencia como si fuera dato real.
+  // La calificaciÃ³n agregada solo se publica en el schema cuando es real:
+  // evita declarar ante buscadores una calificaciÃ³n de referencia como si fuera dato real.
   const jsonLdResenas = resumen.enVivo
     ? {
         '@context': 'https://schema.org',
@@ -31,15 +31,15 @@ export default async function Home() {
       }
     : null;
 
-  // Mismas preguntas y respuestas que la sección visible de preguntas frecuentes.
+  // Mismas preguntas y respuestas que la secciÃ³n visible de preguntas frecuentes.
   const jsonLdFaq = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.pregunta, acceptedAnswer: { '@type': 'Answer', text: f.respuesta } }))
   };
 
-  // Recorrido: entender el problema (Hero) → qué hacemos (Materias) → por qué confiar (Quiénes somos, fundadora,
-  // método) → cómo es el proceso y resolver dudas → actuar (Agendar, único destino de conversión) → contacto.
+  // Recorrido: entender el problema (Hero) â†’ quÃ© hacemos (Materias) â†’ por quÃ© confiar (QuiÃ©nes somos, fundadora,
+  // mÃ©todo) â†’ cÃ³mo es el proceso y resolver dudas â†’ actuar (Agendar, Ãºnico destino de conversiÃ³n) â†’ contacto.
   return (
     <>
       {jsonLdResenas && (
@@ -54,7 +54,7 @@ export default async function Home() {
         <SobreAbogada />
         <Metodo />
         <Manifiesto />
-        {/* Las reseñas solo se muestran cuando son reales (Perfil de Negocio de Google conectado). */}
+        {/* Las reseÃ±as solo se muestran cuando son reales (Perfil de Negocio de Google conectado). */}
         {resumen.enVivo && <Resenas resumen={resumen} enlaceEscribirResena={enlaceEscribirResena} />}
         <Publicaciones />
         <ComoTrabajamos />
@@ -63,7 +63,7 @@ export default async function Home() {
         <Contacto />
       </main>
       <Footer />
-      <BotonWhatsapp />
+      <BotonAgendar />
     </>
   );
 }

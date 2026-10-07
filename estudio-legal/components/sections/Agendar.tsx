@@ -41,8 +41,11 @@ export default function Agendar() {
           <p className="text-xs uppercase tracking-[0.2em] text-electrico/80">Agenda tu asesoría</p>
           <h2 className="mt-4 max-w-2xl text-balance font-display h-seccion font-light text-white">Tu caso merece una respuesta clara</h2>
           <p className="mt-5 max-w-contenido leading-relaxed text-plata/65">
-            Cuéntanos qué te pasó. Te decimos con franqueza si tiene camino y cuáles serían los próximos pasos, antes de que
-            decidas nada.
+            Selecciona la materia de tu consulta abajo y agenda una sesión. Te diremos con total franqueza si tu problema
+            tiene viabilidad jurídica y{' '}
+            <strong className="font-medium text-white">
+              cuáles son las alternativas legales antes de iniciar cualquier procedimiento.
+            </strong>
           </p>
         </Reveal>
 
@@ -88,7 +91,7 @@ export default function Agendar() {
                     </span>
                     <p className="mt-6 text-xs uppercase tracking-[0.18em] text-plata/55">{area ? 'Tu asesoría de' : 'Primera conversación'}</p>
                     <h3 className="mt-2 text-balance font-display text-2xl font-light text-white sm:text-[1.75rem] sm:leading-snug">
-                      {area ? area.nombre : 'Cuéntanos qué te pasó'}
+                      {area ? area.nombre : 'Inicia tu consulta'}
                     </h3>
                     <p className="mt-4 max-w-md leading-relaxed text-plata/65">
                       {area ? area.resumen : 'Elige tu materia para que tu mensaje llegue con contexto, o escríbenos directo y te orientamos con franqueza.'}

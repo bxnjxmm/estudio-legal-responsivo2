@@ -56,6 +56,16 @@ body {
 @media (prefers-reduced-motion: no-preference) { .borde-giratorio { animation: giro 7s linear infinite; } }
 @media (prefers-reduced-motion: reduce) { .borde-giratorio { display: none; } }
 
+/* Logo del encabezado: al pasar el cursor, la balanza se mece una vez. */
+@keyframes balanceo {
+  0%, 100% { rotate: 0deg; }
+  30% { rotate: -5deg; }
+  65% { rotate: 3.5deg; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .group:hover .logo-balanza { animation: balanceo .9s ease-in-out; }
+}
+
 /* Subrayado que se dibuja bajo la última palabra del título de la portada. */
 @keyframes subraya { from { transform: scaleX(0); } to { transform: none; } }
 .subraya { position: relative; display: inline-block; }
@@ -98,10 +108,10 @@ body {
    pantallas con mouse real. En touch (celular/tablet) no existe un ":hover"
    confiable, así que ahí el detalle queda siempre visible en vez de escondido
    detrás de un gesto que el dispositivo no puede dar. */
-.detalle-tarjeta { max-height: 13rem; opacity: 1; }
+.detalle-tarjeta { max-height: 18rem; opacity: 1; }
 @media (hover: hover) and (pointer: fine) {
   .detalle-tarjeta { max-height: 0; opacity: 0; overflow: hidden; transition: max-height .5s ease, opacity .5s ease; }
-  .group:hover .detalle-tarjeta { max-height: 13rem; opacity: 1; }
+  .group:hover .detalle-tarjeta { max-height: 18rem; opacity: 1; }
 }
 
 /* Trama de expediente: líneas verticales tenues que estructuran toda la página */

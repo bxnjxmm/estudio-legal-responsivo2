@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Navbar from '@/components/sections/Navbar';
 import Footer from '@/components/sections/Footer';
-import BotonWhatsapp from '@/components/ui/BotonWhatsapp';
+import BotonAgendar from '@/components/ui/BotonAgendar';
 import ListaPublicaciones from '@/components/ui/ListaPublicaciones';
 
 export const metadata: Metadata = {
@@ -30,7 +30,7 @@ export default function Blog() {
         </section>
       </main>
       <Footer />
-      <BotonWhatsapp />
+      <BotonAgendar />
     </>
   );
 }
