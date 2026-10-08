@@ -14,9 +14,10 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.dominio),
-  title: `${site.marca} | Estudio jurídico en Chile — Penal, Civil, Familia, Laboral y Migración`,
+  // Título (≤ 60 caracteres) y descripción (≤ 160) cortos para que Google no los corte en los resultados.
+  title: `${site.marca} | Estudio jurídico en Santiago`,
   description:
-    'Estudio jurídico en Santiago. Defensa penal, familia, laboral, civil, migración, Policía Local, copropiedad y asesoría inmobiliaria. Evaluamos tu caso en detalle y te explicamos con claridad tus posibilidades reales.',
+    'Estudio jurídico en Santiago: defensa penal, familia, laboral, civil, migración y más. Te explicamos con claridad tus posibilidades reales.',
   keywords: ['estudio jurídico Chile', 'abogados Santiago', 'pensión de alimentos', 'despido injustificado', 'visa Chile', 'defensa penal', 'ley de copropiedad'],
   alternates: { canonical: '/' },
   openGraph: {
@@ -45,7 +46,8 @@ const jsonLd = {
   telephone: site.telefono,
   email: site.email,
   address: { '@type': 'PostalAddress', streetAddress: site.direccion, addressLocality: 'Santiago', addressCountry: 'CL' },
-  areaServed: 'CL'
+  areaServed: 'CL',
+  sameAs: [site.instagramUrl]
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
