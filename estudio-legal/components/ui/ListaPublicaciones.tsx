@@ -4,9 +4,6 @@ import { areas } from '@/lib/site';
 import { posts, filtrosPublicaciones } from '@/lib/posts';
 import TarjetaPost from '@/components/ui/TarjetaPost';
 
-// Además de la destacada, cuántas tarjetas se ven al inicio en celular.
-const PRIMERAS_EN_CELULAR = 3;
-
 const filtros = [{ id: 'todas', categoria: 'Todas' }, ...filtrosPublicaciones(areas)];
 
 // Reparte las tarjetas en filas de 3 (grilla de 6 columnas); si sobran 2 o 1, ocupan la fila completa.
@@ -17,10 +14,9 @@ const columnas = (i: number, n: number) => {
   return 'lg:col-span-2';
 };
 
+// Lista completa de publicaciones con filtros por materia. Vive solo en /blog.
 export default function ListaPublicaciones() {
   const [filtro, setFiltro] = useState('todas');
-  // Solo en celular (<640 px): se muestran las primeras publicaciones y el resto queda tras "Ver más".
-  const [verMas, setVerMas] = useState(false);
   const visibles = filtro === 'todas' ? posts : posts.filter((p) => (p.materia ?? 'general') === filtro);
   const principal = visibles.find((p) => p.destacado) ?? visibles[0];
   const resto = visibles.filter((p) => p !== principal);
@@ -52,24 +48,9 @@ export default function ListaPublicaciones() {
       {resto.length > 0 && (
         <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-6" key={`resto-${filtro}`}>
           {resto.map((p, i) => (
-            <TarjetaPost
-              key={p.slug}
-              post={p}
-              delay={i * 0.05}
-              className={`${columnas(i, resto.length)} ${!verMas && i >= PRIMERAS_EN_CELULAR ? 'max-sm:hidden' : ''}`}
-            />
+            <TarjetaPost key={p.slug} post={p} delay={i * 0.05} className={columnas(i, resto.length)} />
           ))}
         </div>
-      )}
-
-      {!verMas && resto.length > PRIMERAS_EN_CELULAR && (
-        <button
-          type="button"
-          onClick={() => setVerMas(true)}
-          className="mt-6 w-full rounded-full border border-plata/20 px-6 py-3.5 text-sm text-white transition hover:border-electrico/60 hover:bg-electrico/10 sm:hidden"
-        >
-          Ver más publicaciones
-        </button>
       )}
     </div>
   );

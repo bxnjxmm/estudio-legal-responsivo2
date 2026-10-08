@@ -103,7 +103,7 @@ Google), no el listado completo. Para mostrar todas, hay que enlazar directament
 |---|---|---|
 | Sección "Sobre la fundadora" (`components/sections/SobreAbogada.tsx`, foto en `public/images/baitiare-pavez.jpg`) | Retrato profesional de la abogada — fondo simple, buena luz, actitud cercana pero seria | Vertical, mínimo 1000×1250 px |
 | Cada artículo del blog (`app/blog/[slug]/page.tsx`) | Una imagen genérica por categoría (una sala de audiencia, un escritorio con documentos, una firma de contrato) — no hace falta que sea del caso real | 1200×675 px (16:9) |
-| Miniaturas de blog en portada (`components/sections/Publicaciones.tsx`) | Las mismas imágenes de cada artículo, recortadas | 800×450 px |
+| Miniaturas de blog en la página de publicaciones (`/blog`, `components/ui/TarjetaPost.tsx`) | Las mismas imágenes de cada artículo, recortadas | 800×450 px |
 | Imagen para compartir en redes (Open Graph) | Una sola imagen con el nombre, foto y una frase corta — es lo que se ve al compartir el link en WhatsApp o Instagram | 1200×630 px, guardar como `public/og.jpg` |
 | Favicon | Un ícono simple (inicial, escudo, balanza) | 512×512 px, convertir a `.ico` |
 
@@ -135,13 +135,15 @@ dirección, se editan los enlaces `mapa.embed` y `mapa.ruta` en `lib/site.ts`.
   visible, nunca lo esconden.
 - **Sin foco en precio.** Todo el texto evita hablar de honorarios o costos: la propuesta de valor
   es cercanía, trato honesto y formación verificable.
-- **Un solo llamado a la acción.** "Agendar asesoría" es el único botón principal del sitio y **todos** llevan al
-  bloque `#agendar` ("Tu caso merece una respuesta clara"), el único lugar donde se agenda: la persona elige su
-  materia y desde ahí sale a WhatsApp con el mensaje armado. Eso incluye el botón del encabezado, la tarjeta de la
-  portada (elige materia y baja al bloque con ella ya seleccionada), el de la fundadora, el final de cada artículo,
-  el botón fijo (móvil y tablet) y el enlace de las preguntas frecuentes. Las tarjetas de materias tienen un enlace
-  "Consultar" que preselecciona esa materia en el bloque. Los botones persistentes se ocultan mientras haya otro
-  botón principal a la vista, así nunca hay dos a la vez.
+- **Un solo llamado a la acción.** "Agendar asesoría" es el único botón principal del sitio y siempre termina en
+  WhatsApp con el mensaje ya armado según la materia. El botón de la tarjeta de la portada (a la derecha del título)
+  abre WhatsApp directo con la materia que la persona eligió. El del encabezado, el de la fundadora, el final de cada
+  artículo, el botón fijo (móvil y tablet) y el enlace de las preguntas frecuentes llevan al bloque `#agendar`
+  ("Tu caso merece una respuesta clara"), donde se elige la materia y se sale a WhatsApp. Las tarjetas de materias
+  tienen un enlace "Consultar" que preselecciona esa materia en ese bloque. Los botones persistentes se ocultan
+  mientras haya otro botón principal a la vista, así nunca hay dos a la vez.
+- **Publicaciones en página aparte.** Los artículos y sus filtros viven solo en `/blog` (se llega desde "Publicaciones"
+  en el menú y el pie de página); la portada ya no los muestra, para que no se llene de información.
 - **Logo.** El monograma DP (`public/images/logo-dp.png`, blanco sobre fondo transparente) va a la izquierda de la
   marca en el encabezado; al pasar el cursor crece, se ilumina y la balanza se mece. El favicon (`app/icon.png` y
   `app/apple-icon.png`) es el mismo monograma sobre el azul marino original, para que se vea en pestañas claras y
@@ -150,7 +152,7 @@ dirección, se editan los enlaces `mapa.embed` y `mapa.ruta` en `lib/site.ts`.
   con mouse), subrayado que se dibuja bajo el título y cinta de materias. Todo el sitio: barra de progreso de
   lectura en el encabezado y brillo periódico en los botones principales. Todos los efectos se apagan con
   "reducir movimiento" (estilos en `app/globals.css`).
-- **Recorrido de la página.** Portada → materias → quiénes somos y fundadora → método → publicaciones →
+- **Recorrido de la página.** Portada → materias → quiénes somos y fundadora → método →
   cómo trabajamos → preguntas frecuentes → agendar → contacto y ubicación.
 - **Reseñas de Google en vez de testimonios inventados.** En cuanto se conecta el Perfil de
   Negocio, la prueba social pasa de "confía en mí" a "mira lo que dicen en Google", que es más
