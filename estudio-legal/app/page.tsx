@@ -6,7 +6,6 @@ import SobreAbogada from '@/components/sections/SobreAbogada';
 import Metodo from '@/components/sections/Metodo';
 import Manifiesto from '@/components/sections/Manifiesto';
 import Resenas from '@/components/sections/Resenas';
-import Publicaciones from '@/components/sections/Publicaciones';
 import ComoTrabajamos from '@/components/sections/ComoTrabajamos';
 import Faq from '@/components/sections/Faq';
 import Agendar from '@/components/sections/Agendar';
@@ -20,8 +19,8 @@ import { site } from '@/lib/site';
 export default async function Home() {
   const resumen = await obtenerResenas();
 
-  // La calificaciÃ³n agregada solo se publica en el schema cuando es real:
-  // evita declarar ante buscadores una calificaciÃ³n de referencia como si fuera dato real.
+  // La calificación agregada solo se publica en el schema cuando es real:
+  // evita declarar ante buscadores una calificación de referencia como si fuera dato real.
   const jsonLdResenas = resumen.enVivo
     ? {
         '@context': 'https://schema.org',
@@ -31,15 +30,16 @@ export default async function Home() {
       }
     : null;
 
-  // Mismas preguntas y respuestas que la secciÃ³n visible de preguntas frecuentes.
+  // Mismas preguntas y respuestas que la sección visible de preguntas frecuentes.
   const jsonLdFaq = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.pregunta, acceptedAnswer: { '@type': 'Answer', text: f.respuesta } }))
   };
 
-  // Recorrido: entender el problema (Hero) â†’ quÃ© hacemos (Materias) â†’ por quÃ© confiar (QuiÃ©nes somos, fundadora,
-  // mÃ©todo) â†’ cÃ³mo es el proceso y resolver dudas â†’ actuar (Agendar, Ãºnico destino de conversiÃ³n) â†’ contacto.
+  // Recorrido: entender el problema (Hero) → qué hacemos (Materias) → por qué confiar (Quiénes somos, fundadora,
+  // método) → cómo es el proceso y resolver dudas → actuar (Agendar) → contacto. Las publicaciones viven aparte,
+  // en /blog, para que la página principal no se llene de información.
   return (
     <>
       {jsonLdResenas && (
@@ -54,9 +54,8 @@ export default async function Home() {
         <SobreAbogada />
         <Metodo />
         <Manifiesto />
-        {/* Las reseÃ±as solo se muestran cuando son reales (Perfil de Negocio de Google conectado). */}
+        {/* Las reseñas solo se muestran cuando son reales (Perfil de Negocio de Google conectado). */}
         {resumen.enVivo && <Resenas resumen={resumen} enlaceEscribirResena={enlaceEscribirResena} />}
-        <Publicaciones />
         <ComoTrabajamos />
         <Faq />
         <Agendar />
