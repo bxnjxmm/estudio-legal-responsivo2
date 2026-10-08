@@ -165,6 +165,8 @@ dirección, se editan los enlaces `mapa.embed` y `mapa.ruta` en `lib/site.ts`.
 - **Dirección pública del sitio.** Los enlaces canónicos, la imagen para compartir y el sitemap usan
   `https://www.defensaspavez.com` (definido en `lib/site.ts`; `defensaspavez.com` sin "www" redirige ahí desde Vercel).
   Si el dominio cambia, se edita esa línea o se fija la variable `NEXT_PUBLIC_SITE_URL`.
+  La dirección temporal `estudio-legal-responsivo2.vercel.app` redirige de forma permanente (308, conserva ruta y
+  parámetros) al dominio propio; la regla está en `next.config.mjs` y solo aplica a ese dominio.
 - **Imagen para compartir e íconos.** ``app/opengraph-image.jpg`` (1200×630), ``app/icon.png``, ``app/apple-icon.png`` y
   ``app/favicon.ico`` son archivos estáticos: para cambiarlos basta reemplazarlos.
 - **Instagram.** El enlace (`site.instagramUrl` en `lib/site.ts`) aparece en la tarjeta de contacto y en el pie de página,
