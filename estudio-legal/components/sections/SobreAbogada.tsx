@@ -57,7 +57,7 @@ export default function SobreAbogada() {
             ayudamos a resolverlo.”
           </blockquote>
           <a
-            href={cta.ancla}
+            href="#agendar"
             data-cta-zona
             className="group mt-8 inline-flex items-center gap-2 rounded-full bg-electrico px-7 py-3.5 text-sm font-medium text-noche transition hover:bg-white"
           >

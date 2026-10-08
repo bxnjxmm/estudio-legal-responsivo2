@@ -39,8 +39,8 @@ git push -u origin main
 
 En [vercel.com](https://vercel.com): **Add New → Project** → importa el repo → Framework **Next.js**
 (se detecta solo) → agrega las variables de `.env.example` → **Deploy**. Cada `git push` a `main`
-vuelve a desplegar automáticamente. Dominio temporal `*.vercel.app` incluido; el definitivo se
-agrega en **Settings → Domains**.
+vuelve a desplegar automáticamente. Dominio temporal `*.vercel.app` incluido; el definitivo (`defensaspavez.com`)
+ya está conectado en **Settings → Domains**.
 
 ## 4. Un solo canal para agendar
 
@@ -162,10 +162,13 @@ dirección, se editan los enlaces `mapa.embed` y `mapa.ruta` en `lib/site.ts`.
   fuera real puede penalizar el posicionamiento en buscadores.
 - **Elegir la materia antes de escribir.** En "Agenda tu asesoría" la persona puede indicar su materia y el
   mensaje de WhatsApp ya llega con ese contexto, así la abogada sabe de qué se trata desde el primer mensaje.
-- **Dirección pública del sitio.** Los enlaces canónicos, la imagen para compartir y el sitemap usan el dominio de
-  producción que entrega Vercel; al conectar un dominio propio se actualizan solos (o se fija ``NEXT_PUBLIC_SITE_URL``).
-- **Imagen para compartir e íconos.** ``app/opengraph-image.jpg`` (1200×630), ``app/icon.png`` y ``app/apple-icon.png`` son
-  archivos estáticos: para cambiarlos basta reemplazarlos.
+- **Dirección pública del sitio.** Los enlaces canónicos, la imagen para compartir y el sitemap usan
+  `https://www.defensaspavez.com` (definido en `lib/site.ts`; `defensaspavez.com` sin "www" redirige ahí desde Vercel).
+  Si el dominio cambia, se edita esa línea o se fija la variable `NEXT_PUBLIC_SITE_URL`.
+- **Imagen para compartir e íconos.** ``app/opengraph-image.jpg`` (1200×630), ``app/icon.png``, ``app/apple-icon.png`` y
+  ``app/favicon.ico`` son archivos estáticos: para cambiarlos basta reemplazarlos.
+- **Instagram.** El enlace (`site.instagramUrl` en `lib/site.ts`) aparece en la tarjeta de contacto y en el pie de página,
+  y se declara como perfil oficial (`sameAs`) en los datos estructurados.
 - **Mapa sin configuración.** El mapa embebido por dirección y el botón "Cómo llegar" funcionan sin
   API key de Google Maps.
 - **Accesibilidad.** Foco visible, contraste AA sobre fondo oscuro, `prefers-reduced-motion`

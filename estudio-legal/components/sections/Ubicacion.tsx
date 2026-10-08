@@ -1,4 +1,4 @@
-import { Mail, MapPin, Navigation, Phone } from 'lucide-react';
+import { Instagram, Mail, MapPin, Navigation, Phone } from 'lucide-react';
 import { site, mapa } from '@/lib/site';
 
 // Estilo oscuro del embed, a juego con la paleta del sitio: se invierte el mapa claro
@@ -28,6 +28,12 @@ export default function Ubicacion() {
               <a href={`mailto:${site.email}`} className="flex items-center gap-3 break-words py-3 text-plata/75 transition hover:text-white">
                 <Mail className="h-4 w-4 shrink-0 text-electrico" />
                 {site.email}
+              </a>
+            </li>
+            <li>
+              <a href={site.instagramUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 break-words py-3 text-plata/75 transition hover:text-white">
+                <Instagram className="h-4 w-4 shrink-0 text-electrico" />
+                @{site.instagram}
               </a>
             </li>
           </ul>

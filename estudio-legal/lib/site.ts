@@ -1,9 +1,6 @@
-// Dirección pública del sitio (enlaces canónicos, imagen para compartir y buscadores).
-// Prioridad: NEXT_PUBLIC_SITE_URL (si se define) → dominio de producción que Vercel entrega solo
-// (pasa a ser el dominio propio apenas se conecta) → localhost en desarrollo.
-const direccionPublica =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : 'http://localhost:3000');
+// Dirección pública del sitio (enlaces canónicos, imagen para compartir y buscadores): el dominio propio de la
+// clienta, con "www" (defensaspavez.com redirige ahí desde Vercel). Se puede reemplazar con NEXT_PUBLIC_SITE_URL.
+const direccionPublica = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.defensaspavez.com';
 
 export const site = {
   marca: 'Defensas Pavez Abogados',
@@ -14,7 +11,8 @@ export const site = {
   telefono: '+56939501924',
   telefonoVisible: '+56 9 3950 1924',
   email: 'defensaspavezabogados@gmail.com',
-  instagram: process.env.NEXT_PUBLIC_INSTAGRAM ?? 'tu_usuario_ig',
+  instagram: 'defensaspavezabogados',
+  instagramUrl: 'https://www.instagram.com/defensaspavezabogados/',
   dominio: direccionPublica,
   // Datos de Google Business Profile — se completan al conectar reseñas reales.
   googlePlaceId: process.env.NEXT_PUBLIC_GOOGLE_PLACE_ID ?? ''

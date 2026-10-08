@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { faq } from '@/lib/faq';
-import { cta } from '@/lib/site';
 import Reveal from '@/components/ui/Reveal';
 
 export default function Faq() {
@@ -55,8 +54,9 @@ export default function Faq() {
             })}
           </div>
 
-          {/* Enlace de texto (secundario) hacia el único CTA del sitio */}
-          <a href={cta.ancla} className="group mt-8 inline-flex items-center gap-1.5 py-3 text-sm text-electrico transition hover:text-white">
+          {/* Enlace de texto (secundario) hacia el bloque #agendar. Ancla relativa: así no recarga la página
+              aunque la dirección traiga parámetros (?utm=…, ?fbclid=…). */}
+          <a href="#agendar" className="group mt-8 inline-flex items-center gap-1.5 py-3 text-sm text-electrico transition hover:text-white">
             ¿Tienes otra duda? <span className="underline underline-offset-4">Escríbenos</span>
           </a>
         </Reveal>
