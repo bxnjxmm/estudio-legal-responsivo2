@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight, Check } from 'lucide-react';
 import { posts, getPost, minutosLectura, relacionados } from '@/lib/posts';
 import { cta, site } from '@/lib/site';
 import { enlaceAgendar } from '@/lib/agendar';
+import { jsonLdSeguro } from '@/lib/jsonld';
 import Navbar from '@/components/sections/Navbar';
 import Footer from '@/components/sections/Footer';
 import BotonAgendar from '@/components/ui/BotonAgendar';
@@ -51,7 +52,7 @@ export default function Articulo({ params }: { params: { slug: string } }) {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdSeguro(jsonLd) }} />
       <Navbar />
       <main className="bg-noche pt-[112px]">
         <article className="mx-auto max-w-3xl px-6 py-16">

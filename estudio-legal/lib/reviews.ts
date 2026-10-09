@@ -2,35 +2,24 @@ import { site } from '@/lib/site';
 
 export type Resena = { autor: string; comuna: string; calificacion: number; texto: string; relativo: string };
 
-// Reseñas de referencia para esta maqueta — se muestran solo mientras no haya
-// un Perfil de Negocio de Google conectado. Ver README, sección "Reseñas de Google".
-const RESPALDO: Resena[] = [
-  { autor: 'Marcela R.', comuna: 'Maipú', calificacion: 5, texto: 'Llevaba dos años tratando de resolver esto sola. En la primera reunión me explicó todo el proceso y qué esperar en cada etapa.', relativo: 'hace 2 meses' },
-  { autor: 'Jorge V.', comuna: 'Valparaíso', calificacion: 5, texto: 'Me despidieron después de seis años. Llegamos a conciliación antes del juicio y recuperé lo que correspondía.', relativo: 'hace 3 meses' },
-  { autor: 'Yusleidy M.', comuna: 'Estación Central', calificacion: 5, texto: 'Me habían rechazado el trámite dos veces. Revisó el expediente, encontró el error y lo resolvimos.', relativo: 'hace 5 meses' },
-  { autor: 'Patricio S.', comuna: 'Ñuñoa', calificacion: 4, texto: 'Me acompañó a la audiencia y salimos con acuerdo el mismo día. Muy directa para explicar los pasos.', relativo: 'hace 6 meses' },
-  { autor: 'Daniela C.', comuna: 'Puente Alto', calificacion: 5, texto: 'Llamé un domingo por una urgencia familiar. Contestó ella misma y estuvo en el tribunal al día siguiente.', relativo: 'hace 8 meses' }
-];
-
-const RESPALDO_PROMEDIO = 4.9;
-
 export type ResumenResenas = { promedio: number; total: number; resenas: Resena[]; enVivo: boolean };
+
+// Sin reseñas reales no se muestra nada: el sitio nunca publica reseñas de ejemplo ni una calificación inventada.
+const SIN_RESENAS: ResumenResenas = { promedio: 0, total: 0, resenas: [], enVivo: false };
 
 /**
  * Trae las reseñas reales desde Google (Places API - New) si GOOGLE_PLACE_ID y
- * GOOGLE_PLACES_API_KEY están configuradas en Vercel. Si no, muestra las de
- * referencia de arriba. Instrucciones completas de conexión: ver README.
+ * GOOGLE_PLACES_API_KEY están configuradas en Vercel. Si no, o si la consulta falla, devuelve un resumen
+ * vacío (`enVivo: false`) y la sección de reseñas no se muestra. Instrucciones de conexión: ver README.
  */
 export async function obtenerResenas(): Promise<ResumenResenas> {
   const placeId = process.env.GOOGLE_PLACE_ID;
   const apiKey = process.env.GOOGLE_PLACES_API_KEY;
 
-  if (!placeId || !apiKey) {
-    return { promedio: RESPALDO_PROMEDIO, total: RESPALDO.length, resenas: RESPALDO, enVivo: false };
-  }
+  if (!placeId || !apiKey) return SIN_RESENAS;
 
   try {
-    const r = await fetch(`https://places.googleapis.com/v1/places/${placeId}`, {
+    const r = await fetch(`https://places.googleapis.com/v1/places/${encodeURIComponent(placeId)}`, {
       headers: {
         'X-Goog-Api-Key': apiKey,
         'X-Goog-FieldMask': 'rating,userRatingCount,reviews.rating,reviews.text,reviews.authorAttribution,reviews.relativePublishTimeDescription'
@@ -50,12 +39,12 @@ export async function obtenerResenas(): Promise<ResumenResenas> {
       relativo: r.relativePublishTimeDescription ?? ''
     }));
 
-    if (resenas.length === 0) throw new Error('Sin reseñas en la respuesta');
+    if (resenas.length === 0 || typeof datos.rating !== 'number') throw new Error('Sin reseñas o sin calificación en la respuesta');
 
-    return { promedio: datos.rating ?? RESPALDO_PROMEDIO, total: datos.userRatingCount ?? resenas.length, resenas, enVivo: true };
+    return { promedio: datos.rating, total: datos.userRatingCount ?? resenas.length, resenas, enVivo: true };
   } catch {
     // Si la API falla o las credenciales aún no están listas, no se rompe el sitio.
-    return { promedio: RESPALDO_PROMEDIO, total: RESPALDO.length, resenas: RESPALDO, enVivo: false };
+    return SIN_RESENAS;
   }
 }
 

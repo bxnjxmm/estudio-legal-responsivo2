@@ -15,6 +15,7 @@ import BotonAgendar from '@/components/ui/BotonAgendar';
 import { obtenerResenas, enlaceEscribirResena } from '@/lib/reviews';
 import { faq } from '@/lib/faq';
 import { site } from '@/lib/site';
+import { jsonLdSeguro } from '@/lib/jsonld';
 
 export default async function Home() {
   const resumen = await obtenerResenas();
@@ -43,9 +44,9 @@ export default async function Home() {
   return (
     <>
       {jsonLdResenas && (
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdResenas) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdSeguro(jsonLdResenas) }} />
       )}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdSeguro(jsonLdFaq) }} />
       <Navbar />
       <main>
         <Hero />

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Spectral, Inter } from 'next/font/google';
 import './globals.css';
 import { site } from '@/lib/site';
+import { jsonLdSeguro } from '@/lib/jsonld';
 
 const display = Spectral({ subsets: ['latin'], weight: ['300', '400', '600'], variable: '--font-display', display: 'swap' });
 const sans = Inter({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
@@ -54,7 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es-CL" className={`${display.variable} ${sans.variable}`}>
       <body className="font-sans antialiased">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdSeguro(jsonLd) }} />
         {children}
       </body>
     </html>
