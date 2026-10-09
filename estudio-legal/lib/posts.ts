@@ -59,7 +59,7 @@ export const posts: Post[] = [
       { subtitulo: 'Dónde se tramita' },
       'Si la persona falleció sin dejar testamento (sucesión intestada), el trámite se realiza ante el Servicio de Registro Civil e Identificación y puede iniciarse en línea. Si dejó testamento, normalmente la posesión efectiva se solicita ante el tribunal civil del último domicilio del fallecido.',
       { subtitulo: 'Por qué no conviene dejarla para después' },
-      'Mientras no se tramita, los herederos no pueden vender, hipotecar ni transferir los inmuebles de la herencia: el Código Civil exige primero inscribir en el Conservador de Bienes Raíces la resolución de posesión efectiva y hacer las inscripciones especiales de herencia. Postergarlo complica trámites con bancos, ventas y particiones, y la situación se enreda más a medida que pasan los años.',
+      'Mientras no se tramite, los herederos no pueden vender, hipotecar ni transferir los inmuebles de la herencia: el Código Civil exige primero inscribir en el Conservador de Bienes Raíces la resolución de posesión efectiva y hacer las inscripciones especiales de herencia. Postergarlo complica trámites con bancos, ventas y particiones, y la situación se enreda más a medida que pasan los años.',
       { subtitulo: 'Qué viene después' },
       'Con la posesión efectiva se pueden inscribir los inmuebles a nombre de los herederos y realizar los trámites con bancos y otras instituciones. Según el valor de lo heredado y el parentesco, también puede corresponder declarar y pagar el impuesto a las herencias ante el Servicio de Impuestos Internos. Si hay varios herederos, es frecuente que además se necesite una partición para repartir los bienes, ya sea de común acuerdo o por la vía judicial.',
       'Cada herencia es distinta: hay deudas, bienes en el extranjero, testamentos discutidos o herederos que no se ponen de acuerdo. Revisar el caso desde el inicio evita errores que después cuestan tiempo y dinero.'
@@ -85,7 +85,7 @@ export const posts: Post[] = [
       { subtitulo: 'Qué hacer si la respuesta es negativa' },
       'Un rechazo no siempre es el final del camino. Las resoluciones del Servicio pueden impugnarse mediante recursos administrativos y, en ciertos casos, mediante una reclamación ante la Corte de Apelaciones, sobre todo cuando se trata de medidas graves como una expulsión. Esos plazos son breves y corren desde que recibes la notificación, así que el tiempo importa.',
       { subtitulo: 'Cómo podemos ayudarte' },
-      'Revisamos tu documentación antes de presentarla, evaluamos qué categoría de permiso te conviene y, si ya hubo un rechazo, analizamos si hay base para reclamar. Mientras antes lo consultes, más opciones tienes.'
+      'Revisamos tu documentación antes de presentarla, evaluamos qué categoría de permiso te conviene y, si ya hubo un rechazo, analizamos si hay base para reclamar. Cuanto antes lo consultes, más opciones tienes.'
     ]
   },
   {
@@ -94,7 +94,7 @@ export const posts: Post[] = [
     bajada: 'Qué casos ve este tribunal, qué plazos conviene tener presentes y cómo prepararte antes de comparecer.',
     categoria: 'Policía Local', materia: 'policia-local', fecha: '5 de octubre de 2026', fechaISO: '2026-10-05',
     claves: [
-      'Ve infracciones de tránsito, accidentes con daños, reclamos por la Ley del Consumidor y multas municipales, entre otras materias.',
+      'Este tribunal conoce infracciones de tránsito, accidentes con daños, reclamos por la Ley del Consumidor y multas municipales, entre otras materias.',
       'Las acciones por infracciones a la Ley del Consumidor prescriben, por regla general, a los seis meses desde la infracción.',
       'La demanda de indemnización por un accidente tiene un plazo mayor, por regla general de cuatro años, pero conviene reunir pruebas de inmediato.',
       'Llegar con documentos, fotografías y testigos ordenados cambia el resultado.'
@@ -130,7 +130,7 @@ export const posts: Post[] = [
       'Ruidos molestos, mascotas, uso de estacionamientos o modificaciones en las áreas comunes suelen estar regulados por el reglamento de copropiedad. Las infracciones se pueden denunciar ante el Juzgado de Policía Local, que puede aplicar multas. Antes de llegar ahí, conviene dejar registro: fotos, videos, mensajes y reclamos dirigidos al administrador o al comité.',
       { subtitulo: 'Asamblea, comité y administrador' },
       'Las decisiones más importantes se votan en la asamblea de copropietarios, que debe reunirse al menos una vez al año. El comité de administración supervisa al administrador, quien ejecuta los acuerdos y maneja las cuentas. Como copropietario puedes pedir información sobre los gastos, revisar las actas y participar con voz y voto, dentro de las reglas del reglamento.',
-      'Cada comunidad tiene su propio reglamento, y ahí está gran parte de la respuesta a tu caso. Revisarlo con asesoría te ayuda a saber si tienes razón y cuál es la vía más eficaz para resolver.'
+      'Cada comunidad tiene su propio reglamento, y ahí está gran parte de la respuesta a tu caso. Revisarlo con asesoría te ayuda a saber si tienes razón y cuál es la vía más eficaz para resolverlo.'
     ]
   },
   {

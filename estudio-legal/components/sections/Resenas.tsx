@@ -37,7 +37,7 @@ export default function Resenas({ resumen, enlaceEscribirResena }: { resumen: Re
                 </svg>
                 <span className="font-display text-lg text-white">{promedio.toFixed(1)}</span>
                 <Estrellas n={promedio} />
-                <span className="text-sm text-plata/45">{total} reseñas en Google</span>
+                <span className="text-sm text-plata/45">{total} {total === 1 ? 'reseña' : 'reseñas'} en Google</span>
               </div>
             </div>
             <div className="hidden shrink-0 gap-2 sm:flex">

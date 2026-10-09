@@ -6,7 +6,7 @@ export const faq = [
   },
   {
     pregunta: '¿Cómo se paga la asesoría?',
-    respuesta: 'Una vez coordinada, te enviamos por WhatsApp un link de pago seguro para pagar con tarjeta o transferencia.'
+    respuesta: 'Una vez coordinada, te enviamos por WhatsApp un enlace de pago seguro para pagar con tarjeta o transferencia.'
   },
   {
     pregunta: '¿Qué necesito para la primera asesoría?',

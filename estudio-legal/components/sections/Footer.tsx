@@ -24,7 +24,7 @@ export default function Footer() {
             <Link href="/blog" className="py-3 transition hover:text-white">Publicaciones</Link>
             <Link href="/#contacto" className="py-3 transition hover:text-white">Contacto</Link>
           </div>
-          <p className="text-xs leading-relaxed text-plata/55">© {new Date().getFullYear()} {site.marca}. Este sitio informa, no constituye asesoría legal.</p>
+          <p className="text-xs leading-relaxed text-plata/55">© {new Date().getFullYear()} {site.marca}. Este sitio es informativo y no constituye asesoría legal.</p>
         </div>
       </div>
     </footer>
