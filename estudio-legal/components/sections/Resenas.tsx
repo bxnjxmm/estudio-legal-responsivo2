@@ -65,7 +65,7 @@ export default function Resenas({ resumen, enlaceEscribirResena }: { resumen: Re
                 <Quote className="h-6 w-6 text-electrico/70" />
                 <Estrellas n={r.calificacion} />
               </div>
-              <blockquote className="mt-5 font-display text-xl font-light leading-relaxed text-white sm:text-2xl">{r.texto}</blockquote>
+              <blockquote className="mt-5 font-display text-xl font-light leading-relaxed text-white sm:text-2xl sm:leading-8">{r.texto}</blockquote>
               <figcaption className="mt-7 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-plata/55">
                 <span className="text-white">{r.autor}</span>
                 {r.comuna && <><span className="h-1 w-1 rounded-full bg-plata/30" /><span>{r.comuna}</span></>}

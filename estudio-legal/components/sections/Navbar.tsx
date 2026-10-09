@@ -89,7 +89,7 @@ export default function Navbar() {
       <motion.div
         aria-hidden
         style={{ scaleX: progreso }}
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-[2px] origin-left bg-gradient-to-r from-electrico via-[#9CC0FF] to-electrico"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-[2px] origin-left bg-linear-to-r from-electrico via-[#9CC0FF] to-electrico"
       />
     </header>
   );

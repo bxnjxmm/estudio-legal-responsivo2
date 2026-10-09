@@ -168,10 +168,17 @@ dirección, se editan los enlaces `mapa.embed` y `mapa.ruta` en `lib/site.ts`.
   Si el dominio cambia, se edita esa línea o se fija la variable `NEXT_PUBLIC_SITE_URL`.
   La dirección temporal `estudio-legal-responsivo2.vercel.app` redirige de forma permanente (308, conserva ruta y
   parámetros) al dominio propio; la regla está en `next.config.mjs` y solo aplica a ese dominio.
-- **Versiones.** Next.js 15.5 y React 19 (se actualizó desde Next 14, que ya no recibe parches de seguridad). Los avisos
-  de `npm audit` que quedan son de herramientas de compilación (Tailwind 3 y el `postcss` interno de Next), no del sitio
-  publicado; se cierran con Tailwind 4 y Next 16, cambios mayores que conviene hacer con pruebas. `lucide-react` se
-  mantiene en la serie 0.x porque la 1.x quitó el ícono de Instagram.
+- **Versiones.** Next.js 15.5, React 19 y Tailwind CSS 4 (desde Next 14 y Tailwind 3, que ya no recibían parches de
+  seguridad). Los 3 avisos de `npm audit` que quedan vienen del `postcss` interno de Next y de `source-map-js`
+  (herramientas de compilación, no del sitio publicado); se cierran con Next 16. `lucide-react` se mantiene en la
+  serie 0.x porque la 1.x quitó el ícono de Instagram.
+- **Tailwind 4.** El tema (colores de marca, tipografías, `max-w-contenido`, la animación `animate-deriva`) ya no está en
+  `tailwind.config.ts`, sino en el bloque `@theme` de `app/globals.css`; los prefijos de navegador los agrega Tailwind
+  (no se usa `autoprefixer`). Las variables de `next/font` se llaman `--fuente-display` y `--fuente-sans` para no chocar
+  con `--font-display` y `--font-sans` del tema. Según la guía oficial, Tailwind 4 apunta a navegadores modernos
+  (Safari 16.4, Chrome 111, Firefox 128 o más nuevos): en celulares o navegadores más antiguos el estilo podría verse
+  incompleto. En Tailwind 4 `leading-*` pisa a `text-*` aunque este sea responsivo, por eso `sm:leading-8` y `sm:leading-9`
+  están escritos de forma explícita donde antes el interlineado venía de `sm:text-2xl` o `sm:text-3xl`.
 - **Seguridad.** Los encabezados de seguridad (incluida una política de contenido, CSP, que solo permite cargar archivos
   propios y el mapa de Google) están en `next.config.mjs`. Si se agrega un servicio externo (analítica, chat, otro mapa),
   hay que sumar su dominio al CSP o el navegador lo bloqueará. Los datos estructurados se escapan con `lib/jsonld.ts`.

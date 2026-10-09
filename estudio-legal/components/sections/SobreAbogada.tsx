@@ -12,8 +12,8 @@ export default function SobreAbogada() {
         <Reveal>
           <div className="relative mx-auto w-full max-w-sm lg:mx-0">
             {/* Resplandor suave detrás de la foto, en el azul del sitio */}
-            <div className="pointer-events-none absolute -inset-6 rounded-[2rem] bg-electrico/10 blur-3xl" />
-            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-pizarra/40 shadow-[0_30px_80px_-30px_rgba(0,0,0,.85)] ring-1 ring-inset ring-plata/15">
+            <div className="pointer-events-none absolute -inset-6 rounded-4xl bg-electrico/10 blur-3xl" />
+            <div className="relative aspect-4/5 overflow-hidden rounded-2xl bg-pizarra/40 shadow-[0_30px_80px_-30px_rgba(0,0,0,.85)] ring-1 ring-inset ring-plata/15">
               <Image
                 src="/images/baitiare-pavez.jpg"
                 alt={`${site.fundadora}, abogada fundadora de ${site.marca}`}
@@ -23,8 +23,8 @@ export default function SobreAbogada() {
               />
               {/* Viraje azul y degradado inferior para que la foto se funda con el fondo de la sección */}
               <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(155deg,rgba(76,141,255,.16),transparent_55%)]" />
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-marina/90 via-marina/40 to-transparent" />
-              <div className="absolute -top-px left-10 right-10 h-px bg-gradient-to-r from-transparent via-electrico/50 to-transparent" />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-marina/90 via-marina/40 to-transparent" />
+              <div className="absolute -top-px left-10 right-10 h-px bg-linear-to-r from-transparent via-electrico/50 to-transparent" />
             </div>
           </div>
         </Reveal>
@@ -52,7 +52,7 @@ export default function SobreAbogada() {
             })}
           </ul>
 
-          <blockquote className="mt-10 border-l-2 border-electrico/60 pl-5 font-display text-xl font-light leading-relaxed text-white sm:text-2xl">
+          <blockquote className="mt-10 border-l-2 border-electrico/60 pl-5 font-display text-xl font-light leading-relaxed text-white sm:text-2xl sm:leading-8">
             “Buscamos explicarte tu causa con un lenguaje sencillo. Agenda una asesoría con nuestro estudio jurídico y te
             ayudamos a resolverlo.”
           </blockquote>

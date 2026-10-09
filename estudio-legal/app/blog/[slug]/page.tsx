@@ -73,11 +73,11 @@ export default async function Articulo({ params }: Props) {
 
           <div className="relative mt-10 flex h-40 items-center justify-between overflow-hidden rounded-2xl bg-pizarra/40 px-8 sm:h-52 sm:px-12">
             <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(76,141,255,.2),transparent_60%)]" />
-            <Icono aria-hidden className="absolute -bottom-10 -right-6 h-56 w-56 text-plata/[0.05]" strokeWidth={1} />
+            <Icono aria-hidden className="absolute -bottom-10 -right-6 h-56 w-56 text-plata/5" strokeWidth={1} />
             <Icono aria-hidden className="relative h-12 w-12 text-electrico sm:h-14 sm:w-14" strokeWidth={1.2} />
           </div>
 
-          <p className="mt-10 font-display text-xl font-light leading-relaxed text-plata/85 sm:text-2xl">{post.bajada}</p>
+          <p className="mt-10 font-display text-xl font-light leading-relaxed text-plata/85 sm:text-2xl sm:leading-8">{post.bajada}</p>
 
           <aside className="vidrio mt-10 rounded-2xl p-7">
             <h2 className="text-xs uppercase tracking-[0.18em] text-plata/45">Lo esencial</h2>
@@ -96,7 +96,7 @@ export default async function Articulo({ params }: Props) {
               typeof b === 'string' ? (
                 <p key={i}>{b}</p>
               ) : (
-                <h2 key={i} className="!mt-12 text-2xl font-normal leading-snug text-white">{b.subtitulo}</h2>
+                <h2 key={i} className="mt-12! text-2xl font-normal leading-snug text-white">{b.subtitulo}</h2>
               )
             )}
           </div>

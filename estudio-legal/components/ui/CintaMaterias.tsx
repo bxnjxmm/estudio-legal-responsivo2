@@ -7,7 +7,7 @@ export default function CintaMaterias() {
   return (
     <div
       aria-hidden
-      className="cinta-pausa relative overflow-hidden border-y border-plata/10 bg-noche/40 py-4 [mask-image:linear-gradient(90deg,transparent,#000_10%,#000_90%,transparent)]"
+      className="cinta-pausa relative overflow-hidden border-y border-plata/10 bg-noche/40 py-4 mask-[linear-gradient(90deg,transparent,#000_10%,#000_90%,transparent)]"
     >
       <div className="cinta flex w-max items-center whitespace-nowrap">
         {items.map((a, i) => (
