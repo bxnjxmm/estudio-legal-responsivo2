@@ -8,7 +8,7 @@ export default function Manifiesto() {
         <Reveal>
           <p className="font-display h-declaracion font-light text-plata/85">
             Un estudio grande te asigna a un abogado junior y te cobra como si fuera el socio.
-            <span className="text-white"> Aquí, evaluamos tu caso en detalle y te explicamos con claridad tus posibilidades reales.</span>
+            <span className="text-white"> Aquí evaluamos tu caso en detalle y te explicamos con claridad tus posibilidades reales.</span>
           </p>
         </Reveal>
         <Reveal delay={0.12}>
