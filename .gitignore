@@ -1,0 +1,29 @@
+# Dependencias y archivos que genera la compilación
+node_modules/
+.next/
+out/
+.vercel/
+*.tsbuildinfo
+next-env.d.ts
+
+# Variables de entorno y claves: nunca se suben (el ejemplo sin valores sí)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Herramientas y registros locales
+.playwright-mcp/
+.claude/
+*.log
+npm-debug.log*
+
+# Sistema operativo y editores
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Documentos privados de trabajo (precios, acuerdos, borradores)
+plantilla-para-cobrar-sitio-web.html

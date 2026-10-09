@@ -17,7 +17,7 @@ function Estrellas({ n }: { n: number }) {
 
 export default function Resenas({ resumen, enlaceEscribirResena }: { resumen: ResumenResenas; enlaceEscribirResena?: string }) {
   const [i, setI] = useState(0);
-  const { promedio, total, resenas, enVivo } = resumen;
+  const { promedio, total, resenas } = resumen;
   const mover = (d: number) => setI((p) => (p + d + resenas.length) % resenas.length);
   const r = resenas[i];
 
@@ -94,11 +94,6 @@ export default function Resenas({ resumen, enlaceEscribirResena }: { resumen: Re
             )}
           </div>
         </div>
-        {!enVivo && (
-          <p className="mt-6 text-xs text-plata/35">
-            Reseñas de referencia para esta maqueta. Al conectar el Perfil de Negocio de Google, esta sección se llena sola con las reseñas reales.
-          </p>
-        )}
       </div>
     </section>
   );

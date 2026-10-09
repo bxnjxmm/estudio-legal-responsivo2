@@ -9,7 +9,7 @@ reemplázalo apenas ella te confirme la información real.
 | Dato | Dónde está | Qué hacer |
 |---|---|---|
 | Formación de la fundadora, marca, teléfono, correo y dirección | `lib/site.ts` → `site`, `formacion` | Ya son datos reales de Defensas Pavez Abogados |
-| Reseñas de la sección "Reseñas" | `lib/reviews.ts` → `RESPALDO` | Se reemplazan solas al conectar Google (paso 5); mientras tanto son de referencia |
+| Reseñas de la sección "Reseñas" | `lib/reviews.ts` | No hay reseñas de ejemplo: la sección aparece sola cuando se conecta Google (paso 5) |
 | Testimonios del blog / artículos | `lib/posts.ts` | Textos genéricos de ejemplo; se pueden reemplazar por casos reales (anonimizados) |
 
 ## 1. Contenido editable del día a día
@@ -18,7 +18,7 @@ reemplázalo apenas ella te confirme la información real.
 |---|---|
 | `lib/site.ts` | Marca, contacto, mapa, mensajes de WhatsApp, las 8 materias y la formación de la fundadora |
 | `lib/posts.ts` | Artículos del blog |
-| `lib/reviews.ts` | Reseñas de referencia y conexión con Google |
+| `lib/reviews.ts` | Conexión con las reseñas reales de Google |
 
 ## 2. Correr en local
 
@@ -75,9 +75,9 @@ reseñas de ejemplo).
 publicada por Google, sujeta a cambio), pero incluye una cuota gratuita mensual. El sitio pide estos
 datos una sola vez al día (no en cada visita), así que para el tráfico normal de un estudio jurídico
 suele mantenerse dentro de la cuota gratis. Si prefieres no arriesgar ningún cargo, puedes omitir
-este paso: el sitio sigue funcionando perfecto con las reseñas de referencia hasta que decidas
-conectarlo. Una alternativa 100% gratuita es no conectar la API y en su lugar copiar manualmente,
-cada cierto tiempo, las 3-5 mejores reseñas reales al array `RESPALDO` de `lib/reviews.ts`.
+este paso: el sitio funciona perfecto sin la sección de reseñas hasta que decidas conectarlo (nunca
+se publican reseñas de ejemplo). Tampoco conviene copiar a mano reseñas de Google al código sin
+permiso expreso de quien las escribió.
 
 **Limitación de Google:** la API entrega como máximo 5 reseñas por negocio (las más relevantes según
 Google), no el listado completo. Para mostrar todas, hay que enlazar directamente al perfil de Google.
@@ -119,8 +119,9 @@ import Image from 'next/image';
 <Image src="/fotos/abogada.jpg" alt="Baitiare Scarleth Pavez, abogada fundadora de Defensas Pavez Abogados" fill className="object-cover" />
 ```
 
-Deja los archivos en `public/fotos/`. Si vas a usar fotografías de Unsplash mientras consigues las
-reales, el dominio ya está habilitado en `next.config.mjs`.
+Deja los archivos en `public/fotos/`. Las imágenes de otros dominios no están habilitadas a propósito
+(menos superficie de ataque y de costo): si algún día hace falta una, se agrega su dominio en
+`images.remotePatterns` de `next.config.mjs`.
 
 ## 8. Mapa de la oficina (embed de Google Maps en modo oscuro)
 
@@ -167,6 +168,10 @@ dirección, se editan los enlaces `mapa.embed` y `mapa.ruta` en `lib/site.ts`.
   Si el dominio cambia, se edita esa línea o se fija la variable `NEXT_PUBLIC_SITE_URL`.
   La dirección temporal `estudio-legal-responsivo2.vercel.app` redirige de forma permanente (308, conserva ruta y
   parámetros) al dominio propio; la regla está en `next.config.mjs` y solo aplica a ese dominio.
+- **Seguridad.** Los encabezados de seguridad (incluida una política de contenido, CSP, que solo permite cargar archivos
+  propios y el mapa de Google) están en `next.config.mjs`. Si se agrega un servicio externo (analítica, chat, otro mapa),
+  hay que sumar su dominio al CSP o el navegador lo bloqueará. Los datos estructurados se escapan con `lib/jsonld.ts`.
+  El repositorio ignora archivos de claves y variables de entorno (`.gitignore`); las variables van en Vercel, nunca en el código.
 - **Imagen para compartir e íconos.** ``app/opengraph-image.jpg`` (1200×630), ``app/icon.png``, ``app/apple-icon.png`` y
   ``app/favicon.ico`` son archivos estáticos: para cambiarlos basta reemplazarlos.
 - **Instagram.** El enlace (`site.instagramUrl` en `lib/site.ts`) aparece en la tarjeta de contacto y en el pie de página,
