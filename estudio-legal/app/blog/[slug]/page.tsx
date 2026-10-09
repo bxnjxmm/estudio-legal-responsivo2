@@ -16,8 +16,12 @@ export function generateStaticParams() {
   return posts.map((p) => ({ slug: p.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const post = getPost(params.slug);
+// En Next 15, `params` llega como una promesa.
+type Props = { params: Promise<{ slug: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const post = getPost(slug);
   if (!post) return { title: 'Publicación no encontrada' };
   return {
     title: post.titulo,
@@ -35,8 +39,9 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   };
 }
 
-export default function Articulo({ params }: { params: { slug: string } }) {
-  const post = getPost(params.slug);
+export default async function Articulo({ params }: Props) {
+  const { slug } = await params;
+  const post = getPost(slug);
   if (!post) notFound();
 
   const Icono = iconosMateria[post.materia ?? 'general'];
