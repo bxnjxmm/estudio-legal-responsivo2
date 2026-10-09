@@ -1,4 +1,4 @@
-# Estudio Jurídico — Maqueta web premium (Next.js 14 + Tailwind + Framer Motion)
+# Estudio Jurídico — Maqueta web premium (Next.js 15 + React 19 + Tailwind + Framer Motion)
 
 Esta es una **maqueta** para mostrarle a la clienta antes de cargar sus datos reales. Todo lo que
 suena a dato personal (universidad, dirección, biografía) está marcado abajo como inventado —
@@ -168,6 +168,10 @@ dirección, se editan los enlaces `mapa.embed` y `mapa.ruta` en `lib/site.ts`.
   Si el dominio cambia, se edita esa línea o se fija la variable `NEXT_PUBLIC_SITE_URL`.
   La dirección temporal `estudio-legal-responsivo2.vercel.app` redirige de forma permanente (308, conserva ruta y
   parámetros) al dominio propio; la regla está en `next.config.mjs` y solo aplica a ese dominio.
+- **Versiones.** Next.js 15.5 y React 19 (se actualizó desde Next 14, que ya no recibe parches de seguridad). Los avisos
+  de `npm audit` que quedan son de herramientas de compilación (Tailwind 3 y el `postcss` interno de Next), no del sitio
+  publicado; se cierran con Tailwind 4 y Next 16, cambios mayores que conviene hacer con pruebas. `lucide-react` se
+  mantiene en la serie 0.x porque la 1.x quitó el ícono de Instagram.
 - **Seguridad.** Los encabezados de seguridad (incluida una política de contenido, CSP, que solo permite cargar archivos
   propios y el mapa de Google) están en `next.config.mjs`. Si se agrega un servicio externo (analítica, chat, otro mapa),
   hay que sumar su dominio al CSP o el navegador lo bloqueará. Los datos estructurados se escapan con `lib/jsonld.ts`.
