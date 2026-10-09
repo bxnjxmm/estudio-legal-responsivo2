@@ -26,7 +26,7 @@ export default function Hero() {
             <span style={retraso(1)} className="aparece block">Tu problema legal</span>
             <span style={retraso(2)} className="aparece block text-plata/55">no se resuelve</span>
             <span style={retraso(3)} className="aparece block">
-              <span className="subraya bg-gradient-to-r from-white via-white to-[#9CC0FF] bg-clip-text text-transparent">esperando.</span>
+              <span className="subraya bg-linear-to-r from-white via-white to-[#9CC0FF] bg-clip-text text-transparent">esperando.</span>
             </span>
           </h1>
 

@@ -25,13 +25,13 @@ export default function Ubicacion() {
               </a>
             </li>
             <li>
-              <a href={`mailto:${site.email}`} className="flex items-center gap-3 break-words py-3 text-plata/75 transition hover:text-white">
+              <a href={`mailto:${site.email}`} className="flex items-center gap-3 wrap-break-word py-3 text-plata/75 transition hover:text-white">
                 <Mail className="h-4 w-4 shrink-0 text-electrico" />
                 {site.email}
               </a>
             </li>
             <li>
-              <a href={site.instagramUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 break-words py-3 text-plata/75 transition hover:text-white">
+              <a href={site.instagramUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 wrap-break-word py-3 text-plata/75 transition hover:text-white">
                 <Instagram className="h-4 w-4 shrink-0 text-electrico" />
                 @{site.instagram}
               </a>

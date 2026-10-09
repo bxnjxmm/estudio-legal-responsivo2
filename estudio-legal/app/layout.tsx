@@ -4,8 +4,10 @@ import './globals.css';
 import { site } from '@/lib/site';
 import { jsonLdSeguro } from '@/lib/jsonld';
 
-const display = Spectral({ subsets: ['latin'], weight: ['300', '400', '600'], variable: '--font-display', display: 'swap' });
-const sans = Inter({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
+// Las variables de next/font llevan otro nombre que las del tema de Tailwind (--font-display, --font-sans, en
+// globals.css): si se llamaran igual, el tema se referiría a sí mismo y las tipografías quedarían inválidas.
+const display = Spectral({ subsets: ['latin'], weight: ['300', '400', '600'], variable: '--fuente-display', display: 'swap' });
+const sans = Inter({ subsets: ['latin'], variable: '--fuente-sans', display: 'swap' });
 
 export const viewport: Viewport = {
   width: 'device-width',

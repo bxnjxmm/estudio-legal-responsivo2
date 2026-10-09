@@ -23,12 +23,12 @@ export default function TarjetaPost({ post, destacada = false, etiqueta, delay =
         <Link href={`/blog/${post.slug}`} className={`${marco} grid lg:grid-cols-[.75fr_1.25fr]`}>
           <div className="relative flex min-h-[140px] items-center justify-center overflow-hidden bg-pizarra/50 lg:min-h-[320px]">
             <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(76,141,255,.22),transparent_62%)] transition-transform duration-700 group-hover:scale-110" />
-            <Icono aria-hidden className="absolute -bottom-8 -right-6 h-48 w-48 text-plata/[0.05]" strokeWidth={1} />
+            <Icono aria-hidden className="absolute -bottom-8 -right-6 h-48 w-48 text-plata/5" strokeWidth={1} />
             <Icono aria-hidden className="relative h-14 w-14 text-electrico" strokeWidth={1.2} />
           </div>
           <div className="flex flex-col p-7 sm:p-10">
             <span className="text-xs uppercase tracking-[0.18em] text-electrico/80">{etiqueta ?? post.categoria}</span>
-            <h3 className="mt-4 font-display text-2xl leading-snug text-white transition group-hover:text-electrico sm:text-3xl">{post.titulo}</h3>
+            <h3 className="mt-4 font-display text-2xl leading-snug text-white transition group-hover:text-electrico sm:text-3xl sm:leading-9">{post.titulo}</h3>
             <p className="mt-4 max-w-contenido leading-relaxed text-plata/60">{post.bajada}</p>
             <ul className="mt-6 space-y-2.5 text-sm text-plata/70">
               {post.claves.slice(0, 3).map((c) => (
@@ -50,7 +50,7 @@ export default function TarjetaPost({ post, destacada = false, etiqueta, delay =
       <Link href={`/blog/${post.slug}`} className={`${marco} flex h-full flex-col`}>
         <div className="relative flex h-24 items-center justify-between overflow-hidden bg-pizarra/50 px-7 sm:h-28">
           <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(76,141,255,.18),transparent_60%)] transition-transform duration-700 group-hover:scale-110" />
-          <Icono aria-hidden className="absolute -bottom-6 -right-3 h-28 w-28 text-plata/[0.05]" strokeWidth={1} />
+          <Icono aria-hidden className="absolute -bottom-6 -right-3 h-28 w-28 text-plata/5" strokeWidth={1} />
           <Icono aria-hidden className="relative h-7 w-7 text-electrico" strokeWidth={1.4} />
           <span className="relative text-xs uppercase tracking-[0.18em] text-electrico/80">{post.categoria}</span>
         </div>

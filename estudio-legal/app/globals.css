@@ -1,6 +1,56 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@theme {
+  --color-noche: #0b0c10;
+  --color-marina: #0a1128;
+  --color-pizarra: #1c2541;
+  --color-acero: #3a506b;
+  --color-electrico: #4c8dff;
+  --color-plata: #c9d6e3;
+
+  --font-display: var(--fuente-display), Georgia, serif;
+  --font-sans: var(--fuente-sans), system-ui, sans-serif;
+
+  --container-contenido: 68ch;
+
+  --animate-deriva: deriva 9s ease-in-out infinite;
+
+  @keyframes deriva {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+    50% {
+      transform: translate3d(0, -14px, 0);
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+/* Tailwind 4 dejó los botones con el cursor de flecha; se restaura la manita en los que se pueden usar. */
+@layer base {
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+}
 
 :root { color-scheme: dark; }
 

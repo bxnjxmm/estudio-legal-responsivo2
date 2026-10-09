@@ -75,9 +75,9 @@ export default function Agendar() {
 
         <Reveal delay={0.14}>
           <div className="vidrio relative mt-8 overflow-hidden rounded-3xl">
-            <div className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-electrico/70 to-transparent" />
+            <div className="absolute inset-x-10 top-0 h-px bg-linear-to-r from-transparent via-electrico/70 to-transparent" />
             <div className="grid lg:grid-cols-[1.1fr_1fr]">
-              <div className="p-7 sm:p-10 lg:min-h-[19rem] lg:p-12" aria-live="polite">
+              <div className="p-7 sm:p-10 lg:min-h-76 lg:p-12" aria-live="polite">
                 <AnimatePresence mode="wait" initial={false}>
                   <motion.div
                     key={area?.slug ?? 'general'}

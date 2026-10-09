@@ -14,7 +14,7 @@ export default function HeroAgenda() {
     <div data-cta-zona className="relative overflow-hidden rounded-[1.15rem] bg-plata/10 p-px">
       <span aria-hidden className="borde-giratorio" />
       <div className="vidrio-solido relative rounded-2xl p-7 sm:p-8">
-        <div className="absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-electrico/70 to-transparent" />
+        <div className="absolute -top-px left-8 right-8 h-px bg-linear-to-r from-transparent via-electrico/70 to-transparent" />
 
         <p className="flex items-center gap-2.5 text-xs uppercase tracking-[0.2em] text-electrico/90">
           <span className="relative flex h-2 w-2">
