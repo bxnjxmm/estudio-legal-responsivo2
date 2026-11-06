@@ -21,7 +21,7 @@ export default function Blog() {
           </h1>
           <p className="mt-5 max-w-contenido text-plata/60">
             Una guía por cada materia que atendemos, con lo que explicamos una y otra vez en reuniones, escrita para que
-            puedas leerla antes de contratar a nadie.
+            puedas leerla antes de contratar.
           </p>
 
           <div className="mt-12">
